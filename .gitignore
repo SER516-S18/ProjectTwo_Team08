@@ -1,3 +1,7 @@
 # Ingnore class files
 *.class
+*.idea
+out
+*.iml
+
 
