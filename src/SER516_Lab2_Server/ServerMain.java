@@ -2,14 +2,21 @@ package SER516_Lab2_Server;
 
 import SER516_Lab2_Server.UIComponents.*;
 
+import java.awt.*;
+
 class ServerMain {
 
 	public static void initialiseGUI()
 	{
-		ServerFrame serverFrame = new ServerFrame();
-		serverFrame.setSize(1000,500);
-		serverFrame.setVisible(true);
-		serverFrame.setDefaultCloseOperation(ServerFrame.EXIT_ON_CLOSE);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ServerUI window = new ServerUI();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	public static void main(String[] args){
