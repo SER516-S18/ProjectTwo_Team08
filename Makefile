@@ -6,10 +6,11 @@ JAVAC = javac
 JAVA  = java
 
 server:
-	cd src/SER516_Lab2_Server; $(JAVAC) *.java; cd ..; $(JAVA) SER516_Lab2_Server/Server_Main;
+	cd src/SER516_Lab2_Server; $(JAVAC) UIComponents/*.java *.java; cd ..;  $(JAVA) SER516_Lab2_Server/ServerMain;
+
 
 client:
-	cd src/SER516_Lab2_Client; $(JAVAC) *.java; cd ..; $(JAVA) SER516_Lab2_Client/Client_Main;
+	cd src/SER516_Lab2_Client; $(JAVAC) *.java; cd ..; $(JAVA) SER516_Lab2_Client/ClientMain;
 
 clean:
 	find . -type f -name '*.class' -exec rm {} +

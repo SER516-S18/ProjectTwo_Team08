@@ -1,4 +1,4 @@
-package SER516_Lab2_Server;
+package SER516_Lab2_Server.UIComponents;
 
 import javax.swing.*;
 

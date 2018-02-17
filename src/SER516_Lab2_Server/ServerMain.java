@@ -1,5 +1,6 @@
 package SER516_Lab2_Server;
 
+import SER516_Lab2_Server.UIComponents.*;
 
 class ServerMain {
 
