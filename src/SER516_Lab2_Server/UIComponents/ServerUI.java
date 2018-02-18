@@ -173,7 +173,7 @@ public class ServerUI {
 
 		if(!FLAG)
 		{
-			//Start Server Code
+			//Start Server with 4 channels
 			serverControl.start();
 			this.FLAG = true;
 			this.serverInstantiatedPanel.setBackground(Color.GREEN);

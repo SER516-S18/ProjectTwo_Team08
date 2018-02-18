@@ -6,6 +6,10 @@ public class ServerControl {
 
     private ServerThread serverThread;
 
+    public ServerThread getServerThread() {
+        return serverThread;
+    }
+
     public void start()
     {
         serverThread = new ServerThread(Consts.PORT_NUMBER);
@@ -16,7 +20,7 @@ public class ServerControl {
     {
         try {
             serverThread.serverSocket.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Server Stopped");
         }
     }
