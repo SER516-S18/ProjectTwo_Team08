@@ -1,6 +1,7 @@
 package SER516_Lab2_Server.UIComponents;
 
 import SER516_Lab2_Server.ServerControl;
+import SER516_Lab2_Server.ServerThread;
 
 import java.awt.EventQueue;
 
@@ -13,6 +14,8 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
@@ -25,8 +28,8 @@ public class ServerUI {
 	private final Color BLUE = new Color(207, 220, 239);
 	private final Color LIGHTBLUE = new Color(228, 232, 241);
 	private final Color PINK = new Color(237, 219, 219);
-	ServerControl serverControl;
-
+	private ServerControl serverControl;
+	private ServerThread serverThread;
 	/**
 	 * Create the application.
 	 */
@@ -69,7 +72,8 @@ public class ServerUI {
 		consoleTextPane.setBounds(15, 512, 743, 90);
 		consoleTextPane.setBorder(BorderFactory.createLineBorder(Color.black));
 		serverFrame.getContentPane().add(consoleTextPane);
-		
+
+
 		JPanel viewPanel = new JPanel();
 		viewPanel.setBackground(SystemColor.controlHighlight);
 		viewPanel.setBounds(15, 65, 743, 431);
@@ -154,6 +158,25 @@ public class ServerUI {
 		frequencyText.setBounds(600, 172, 129, 62);
 		frequencyText.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(frequencyText);
+
+		frequencyText.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(frequencyText.getText().length()>=1)
+					serverThread.changeFrequency(Integer.parseInt(frequencyText.getText()));
+			}
+
+		});
 		
 	}
 
@@ -175,6 +198,7 @@ public class ServerUI {
 		{
 			//Start Server with 4 channels
 			serverControl.start();
+			serverThread = serverControl.getServerThread();
 			this.FLAG = true;
 			this.serverInstantiatedPanel.setBackground(Color.GREEN);
 		}

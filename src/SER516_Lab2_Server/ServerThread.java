@@ -80,6 +80,7 @@ public class ServerThread implements Runnable {
                     String val = dataInputStream.readUTF();
                     channels = Integer.parseInt(val);
                     System.out.println(channels);
+               //     System.out.println("Here is frequency"+stats.frequency);
                     //To Do
                     generateRandomAndSendData(dataOutputStream);
                   //  sendData();
