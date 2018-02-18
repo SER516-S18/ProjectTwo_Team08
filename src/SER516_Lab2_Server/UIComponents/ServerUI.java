@@ -196,7 +196,6 @@ public class ServerUI {
 
 		if(!FLAG)
 		{
-			//Start Server with 4 channels
 			serverControl.start();
 			serverThread = serverControl.getServerThread();
 			this.FLAG = true;
@@ -205,7 +204,6 @@ public class ServerUI {
 		else
 		{
 			serverControl.stop();
-			//Stop Server Code
 			this.FLAG = false;
 			this.serverInstantiatedPanel.setBackground(Color.RED);
 		}
