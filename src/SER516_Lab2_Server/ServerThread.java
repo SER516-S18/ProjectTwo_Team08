@@ -6,6 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  * Author Balachandar Sampath
@@ -21,6 +24,7 @@ public class ServerThread implements Runnable {
     private DataOutputStream dataOutputStream;
     public int channels;
     public Stats stats;
+    private Timer numberGeneratetimer = new Timer(1000, null);
    /* private class Channels
     {
         int channel;
@@ -80,9 +84,8 @@ public class ServerThread implements Runnable {
                     String val = dataInputStream.readUTF();
                     channels = Integer.parseInt(val);
                     System.out.println(channels);
+                    generateNumbersForOutput();
                //     System.out.println("Here is frequency"+stats.frequency);
-                    //To Do
-                    generateRandomAndSendData(dataOutputStream);
                   //  sendData();
                 }
             }
@@ -92,13 +95,47 @@ public class ServerThread implements Runnable {
         catch (Exception e)
         {
             e.printStackTrace();
+            numberGeneratetimer.stop();
         }
         finally {
 
         }
     }
-    //To generate random numbers and send data to client
-    private void generateRandomAndSendData(DataOutputStream dataOutputStream) {
+    
+    /**
+    * Generates a set of random numbers in the range of the high and low numbers 
+    * recieved through the "stats" object. It fires every 1/frequency seconds, and outputs the string to 
+    * the client. The set size depends on the initial channels recieved from the client.
+    * 
+    * @author Jason Rice
+    * @version 1.0
+    *
+    */
+    private void generateNumbersForOutput(){
+        ActionListener numbersActionListener = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent eve){
+                if(!serverSocket.isClosed() && serverSocket.isBound()){
+                    String outPut = "";
 
+                    for(int i = 0; i < channels; i++){
+                        outPut += (int)(Math.random() * ((stats.highestValue + 1) - stats.lowestValue)
+                            + stats.lowestValue);
+
+                        if(i < (channels-1)){
+                            outPut += ",";
+                        }
+                    }
+                    try{
+                        dataOutputStream.writeUTF(outPut);
+                    } catch(Exception e){
+                        e.printStackTrace();
+                        numberGeneratetimer.stop();
+                    }
+                }
+            } 
+        }; 
+        numberGeneratetimer = new Timer((int)(1000/stats.frequency), numbersActionListener);
+        numberGeneratetimer.start();
     }
 }
