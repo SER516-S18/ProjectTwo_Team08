@@ -104,7 +104,7 @@ public class ServerUI {
 		highestValText.setBounds(600, 16, 129, 62);
 		viewPanel.add(highestValText);
 		highestValText.setBackground(this.PINK);
-		highestValText.setEditable(false);
+		highestValText.setEditable(true);
 		highestValText.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		/*JTextPane txtpnLowestValue = new JTextPane();
@@ -125,7 +125,7 @@ public class ServerUI {
 		viewPanel.add(lowestValLabel);
 		
 		JTextPane lowestValText = new JTextPane();
-		lowestValText.setEditable(false);
+		lowestValText.setEditable(true);
 		lowestValText.setBackground(this.PINK);
 		lowestValText.setBounds(600, 94, 129, 62);
 		lowestValText.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -149,7 +149,7 @@ public class ServerUI {
 		viewPanel.add(frequencyLabel);
 		
 		JTextPane frequencyText = new JTextPane();
-		frequencyText.setEditable(false);
+		frequencyText.setEditable(true);
 		frequencyText.setBackground(this.PINK);
 		frequencyText.setBounds(600, 172, 129, 62);
 		frequencyText.setBorder(BorderFactory.createLineBorder(Color.black));
