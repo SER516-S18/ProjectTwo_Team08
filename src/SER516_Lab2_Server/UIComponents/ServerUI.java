@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
@@ -16,6 +18,8 @@ import javax.swing.SwingConstants;
 public class ServerUI {
 
 	private JFrame serverFrame;
+	private JPanel serverInstantiatedPanel;
+	private boolean FLAG = false;
 	private final Color BLUE = new Color(207, 220, 239);
 	private final Color LIGHTBLUE = new Color(228, 232, 241);
 	private final Color PINK = new Color(237, 219, 219);
@@ -48,6 +52,12 @@ public class ServerUI {
 		btnStartStop.setBorder(BorderFactory.createLineBorder(Color.black));
 		serverFrame.getContentPane().add(btnStartStop);
 		
+		btnStartStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				serverStartStop(FLAG);
+			}
+		});
+		
 		JTextPane consoleTextPane = new JTextPane();
 		consoleTextPane.setFont(new Font("Monospaced", Font.PLAIN, 20));
 		consoleTextPane.setText("Console:");
@@ -64,11 +74,11 @@ public class ServerUI {
 		serverFrame.getContentPane().add(viewPanel);
 		viewPanel.setLayout(null);
 		
-		JPanel serverInstantiatedPanel = new JPanel();
+		serverInstantiatedPanel = new JPanel();
 		serverInstantiatedPanel.setBounds(28, 16, 413, 399);
 		serverInstantiatedPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(serverInstantiatedPanel);
-		serverInstantiatedPanel.setBackground(this.PINK);
+		serverInstantiatedPanel.setBackground(Color.RED);
 		
 		/*JTextPane txtpnHighest = new JTextPane();
 		txtpnHighest.setBounds(456, 16, 129, 62);
@@ -142,5 +152,27 @@ public class ServerUI {
 		frequencyText.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(frequencyText);
 		
+	}
+	
+	/**
+	 * Author Akash Sharma
+	 * Function to Start/Stop Server and Update Server Status
+	 * @param FLAG
+	 */
+	
+	public void serverStartStop(boolean FLAG)
+	{
+		if(!FLAG)
+		{
+			//Start Server Code
+			this.FLAG = true;
+			this.serverInstantiatedPanel.setBackground(Color.GREEN);
+		}
+		else
+		{
+			//Stop Server Code
+			this.FLAG = false;
+			this.serverInstantiatedPanel.setBackground(Color.RED);
+		}
 	}
 }
