@@ -3,8 +3,10 @@ package SER516_Lab2_Server;
 import SER516_Lab2_Server.UIComponents.*;
 
 import java.awt.*;
+import java.io.IOException;
 
 class ServerMain {
+
 
 	public static void initialiseGUI()
 	{
@@ -19,9 +21,8 @@ class ServerMain {
 		});
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws InterruptedException, IOException {
 
-		//new Thread(new ServerThread(Consts.PORT_NUMBER)).start();
 		initialiseGUI();
 		System.out.println("This server is running on Port: "+Consts.PORT_NUMBER+".");
 

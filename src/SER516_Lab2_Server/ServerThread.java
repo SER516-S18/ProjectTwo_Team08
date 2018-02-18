@@ -7,8 +7,8 @@ import java.net.Socket;
 
 public class ServerThread implements Runnable {
     private int localPort;
-    private Boolean isStopped;
-    private ServerSocket serverSocket;
+    public Boolean isStopped;
+    public ServerSocket serverSocket;
     private Socket clientSocket;
     private InputStream inputStream;
     private OutputStream outputStream;
@@ -22,9 +22,8 @@ public class ServerThread implements Runnable {
     @Override
     public void run() {
         try{
-
             serverSocket = new ServerSocket(localPort);
-
+            System.out.println("Server Started");
             while (!isStopped && serverSocket.isBound() && !serverSocket.isClosed())
             {
                clientSocket = serverSocket.accept();
@@ -32,6 +31,8 @@ public class ServerThread implements Runnable {
                outputStream = clientSocket.getOutputStream();
                outputStream.write("Hello From Server".getBytes());
             }
+            serverSocket.close();
+            System.out.println("Server Stopped");
         }
         catch (Exception e)
         {

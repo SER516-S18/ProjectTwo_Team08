@@ -1,5 +1,7 @@
 package SER516_Lab2_Server.UIComponents;
 
+import SER516_Lab2_Server.ServerControl;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,7 +25,7 @@ public class ServerUI {
 	private final Color BLUE = new Color(207, 220, 239);
 	private final Color LIGHTBLUE = new Color(228, 232, 241);
 	private final Color PINK = new Color(237, 219, 219);
-
+	ServerControl serverControl;
 
 	/**
 	 * Create the application.
@@ -37,6 +39,7 @@ public class ServerUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		initializeServerControl();
 		serverFrame = new JFrame();
 		serverFrame.setFont(new Font("Monospaced", Font.PLAIN, 16));
 		serverFrame.setTitle("Server");
@@ -153,7 +156,12 @@ public class ServerUI {
 		viewPanel.add(frequencyText);
 		
 	}
-	
+
+
+	private void initializeServerControl() {
+		 serverControl = new ServerControl();
+	}
+
 	/**
 	 * Author Akash Sharma
 	 * Function to Start/Stop Server and Update Server Status
@@ -162,14 +170,17 @@ public class ServerUI {
 	
 	public void serverStartStop(boolean FLAG)
 	{
+
 		if(!FLAG)
 		{
 			//Start Server Code
+			serverControl.start();
 			this.FLAG = true;
 			this.serverInstantiatedPanel.setBackground(Color.GREEN);
 		}
 		else
 		{
+			serverControl.stop();
 			//Stop Server Code
 			this.FLAG = false;
 			this.serverInstantiatedPanel.setBackground(Color.RED);
