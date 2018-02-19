@@ -85,7 +85,6 @@ public class ServerThread implements Runnable {
                     channels = Integer.parseInt(val);
                     System.out.println(channels);
                     generateNumbersForOutput();
-               //     System.out.println("Here is frequency"+stats.frequency);
                   //  sendData();
                 }
             }
