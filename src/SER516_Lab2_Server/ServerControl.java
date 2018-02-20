@@ -1,6 +1,7 @@
 package SER516_Lab2_Server;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class ServerControl {
 
@@ -10,9 +11,12 @@ public class ServerControl {
         return serverThread;
     }
 
-    public void start()
+    /**
+    * @param inputValues
+    */
+    public void start(Map inputValues)
     {
-        serverThread = new ServerThread(Consts.PORT_NUMBER);
+        serverThread = new ServerThread(Consts.PORT_NUMBER, inputValues);
         new Thread(serverThread).start();
     }
 

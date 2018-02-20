@@ -2,6 +2,7 @@ package SER516_Lab2_Server.UIComponents;
 
 import SER516_Lab2_Server.ServerControl;
 import SER516_Lab2_Server.ServerThread;
+import SER516_Lab2_Server.InputFieldExtractor;
 
 import java.awt.EventQueue;
 
@@ -19,11 +20,15 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
+import java.util.Map;
 
 public class ServerUI {
 
 	private JFrame serverFrame;
 	private JPanel serverInstantiatedPanel;
+	private JTextPane highestValText;
+	private JTextPane lowestValText;
+	private JTextPane frequencyText;
 	private boolean FLAG = false;
 	private final Color BLUE = new Color(207, 220, 239);
 	private final Color LIGHTBLUE = new Color(228, 232, 241);
@@ -104,7 +109,7 @@ public class ServerUI {
 		highestValLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(highestValLabel);
 		
-		JTextPane highestValText = new JTextPane();
+		highestValText = new JTextPane();
 		highestValText.setBounds(600, 16, 129, 62);
 		viewPanel.add(highestValText);
 		highestValText.setBackground(this.PINK);
@@ -128,7 +133,7 @@ public class ServerUI {
 		lowestValLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(lowestValLabel);
 		
-		JTextPane lowestValText = new JTextPane();
+		lowestValText = new JTextPane();
 		lowestValText.setEditable(true);
 		lowestValText.setBackground(this.PINK);
 		lowestValText.setBounds(600, 94, 129, 62);
@@ -152,7 +157,7 @@ public class ServerUI {
 		frequencyLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(frequencyLabel);
 		
-		JTextPane frequencyText = new JTextPane();
+		frequencyText = new JTextPane();
 		frequencyText.setEditable(true);
 		frequencyText.setBackground(this.PINK);
 		frequencyText.setBounds(600, 172, 129, 62);
@@ -196,7 +201,10 @@ public class ServerUI {
 
 		if(!FLAG)
 		{
-			serverControl.start();
+			InputFieldExtractor ife = new InputFieldExtractor();
+			Map<String, Integer> inputValues = ife.getInputValues(
+				highestValText, lowestValText, frequencyText);
+			serverControl.start(inputValues);
 			serverThread = serverControl.getServerThread();
 			this.FLAG = true;
 			this.serverInstantiatedPanel.setBackground(Color.GREEN);
@@ -207,5 +215,17 @@ public class ServerUI {
 			this.FLAG = false;
 			this.serverInstantiatedPanel.setBackground(Color.RED);
 		}
+		toggleInputFields();
+	}
+
+	/**
+	* Author: Jason Rice
+	* toggles the highest, lowest, and frequency input fields from allowing
+	* user input.
+	*/
+	private void toggleInputFields(){
+		highestValText.setEditable(!FLAG);
+		lowestValText.setEditable(!FLAG);
+		frequencyText.setEditable(!FLAG);
 	}
 }

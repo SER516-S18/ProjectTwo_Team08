@@ -6,9 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import java.util.Map;
 
 /**
  * Author Balachandar Sampath
@@ -24,7 +22,8 @@ public class ServerThread implements Runnable {
     private DataOutputStream dataOutputStream;
     public int channels;
     public Stats stats;
-    private Timer numberGeneratetimer = new Timer(1000, null);
+    public NumberGenerator numberGenerator;
+    public Map inputValues;
    /* private class Channels
     {
         int channel;
@@ -60,9 +59,10 @@ public class ServerThread implements Runnable {
     {
         this.stats.lowestValue = lowestValue;
     }
-    ServerThread(int localPort)
+    ServerThread(int localPort, Map inputValues)
     {
         this.localPort = localPort;
+        this.inputValues = inputValues;
     }
 
     @Override
@@ -79,62 +79,32 @@ public class ServerThread implements Runnable {
                outputStream = clientSocket.getOutputStream();
                dataInputStream = new DataInputStream(inputStream);
                dataOutputStream = new DataOutputStream(outputStream);
+
+               numberGenerator = new NumberGenerator(dataOutputStream, serverSocket);
+               numberGenerator.setHigh((int)inputValues.get("high"));
+               numberGenerator.setLow((int)inputValues.get("low"));
+               numberGenerator.setFrequency((int)inputValues.get("frequency"));
+
                //byte[] channels = new byte[500];
                 while(true) {
                     String val = dataInputStream.readUTF();
                     channels = Integer.parseInt(val);
                     System.out.println(channels);
-                    generateNumbersForOutput();
+                    numberGenerator.setChannels(channels);
+                    numberGenerator.Start();
                   //  sendData();
                 }
             }
             serverSocket.close();
+            numberGenerator.Stop();
             System.out.println("Server Stopped");
         }
         catch (Exception e)
         {
             e.printStackTrace();
-            numberGeneratetimer.stop();
         }
         finally {
 
         }
-    }
-    
-    /**
-    * Generates a set of random numbers in the range of the high and low numbers 
-    * recieved through the "stats" object. It fires every 1/frequency seconds, and outputs the string to 
-    * the client. The set size depends on the initial channels recieved from the client.
-    * 
-    * @author Jason Rice
-    * @version 1.0
-    *
-    */
-    private void generateNumbersForOutput(){
-        ActionListener numbersActionListener = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent eve){
-                if(!serverSocket.isClosed() && serverSocket.isBound()){
-                    String outPut = "";
-
-                    for(int i = 0; i < channels; i++){
-                        outPut += (int)(Math.random() * ((stats.highestValue + 1) - stats.lowestValue)
-                            + stats.lowestValue);
-
-                        if(i < (channels-1)){
-                            outPut += ",";
-                        }
-                    }
-                    try{
-                        dataOutputStream.writeUTF(outPut);
-                    } catch(Exception e){
-                        e.printStackTrace();
-                        numberGeneratetimer.stop();
-                    }
-                }
-            } 
-        }; 
-        numberGeneratetimer = new Timer((int)(1000/stats.frequency), numbersActionListener);
-        numberGeneratetimer.start();
     }
 }
