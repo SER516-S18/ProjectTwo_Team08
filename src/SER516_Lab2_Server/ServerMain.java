@@ -24,7 +24,6 @@ class ServerMain {
 	public static void main(String[] args) throws InterruptedException, IOException {
 
 		initialiseGUI();
-		System.out.println("This server is running on Port: "+Consts.PORT_NUMBER+".");
 
 	}
 }

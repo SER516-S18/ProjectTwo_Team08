@@ -6,10 +6,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Map;
 
 /**
- * Author Balachandar Sampath
+ * Establishes socket connection with client and runs the server
+ * @author Balachandar Sampath
+ * @version 1.1
  */
 
 public class ServerThread implements Runnable {
@@ -21,20 +24,13 @@ public class ServerThread implements Runnable {
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
     public int channels;
-    public Stats stats;
+ //   public Stats stats;
     public NumberGenerator numberGenerator;
     public Map inputValues;
-   /* private class Channels
-    {
-        int channel;
-        public Channels(int channel)
-        {
-            this.channel=channel;
-        }
-    }*/
 
 
-    private class Stats
+// This class was written with the intention what if we want to change the frequency in the middle of conversation with server
+  /*  private class Stats
     {
         public int frequency;
         public int highestValue;
@@ -58,7 +54,7 @@ public class ServerThread implements Runnable {
     public void changeLowestValue(int lowestValue)
     {
         this.stats.lowestValue = lowestValue;
-    }
+    }*/
     ServerThread(int localPort, Map inputValues)
     {
         this.localPort = localPort;
@@ -69,9 +65,10 @@ public class ServerThread implements Runnable {
     public void run() {
         try{
             //Initialise hardcoded stats which can be later updated by event listener from UI
-            stats = new Stats(5,1,10);
+         //   stats = new Stats(5,1,10);
             serverSocket = new ServerSocket(localPort);
             System.out.println("Server Started");
+            System.out.println("This server is running on Port: "+Consts.PORT_NUMBER+".");
             while (serverSocket.isBound() && !serverSocket.isClosed())
             {
                clientSocket = serverSocket.accept();
@@ -85,23 +82,34 @@ public class ServerThread implements Runnable {
                numberGenerator.setLow((int)inputValues.get("low"));
                numberGenerator.setFrequency((int)inputValues.get("frequency"));
 
-               //byte[] channels = new byte[500];
                 while(true) {
-                    String val = dataInputStream.readUTF();
-                    channels = Integer.parseInt(val);
-                    System.out.println(channels);
-                    numberGenerator.setChannels(channels);
-                    numberGenerator.Start();
+                    boolean isClientClosed = false;
+                   try {
+                       String val = dataInputStream.readUTF();
+
+                       channels = Integer.parseInt(val);
+                       System.out.println("Number of Channels:" + channels);
+                       numberGenerator.setChannels(channels);
+                       numberGenerator.Start();
+                   }
+                   catch (SocketException e)
+                   {
+                       isClientClosed = true;
+                       System.out.println("Client Connection closed");
+                       numberGenerator.numberTimer.stop();
+                   }
+                    if(isClientClosed)
+                   break;
                   //  sendData();
                 }
             }
             serverSocket.close();
             numberGenerator.Stop();
-            System.out.println("Server Stopped");
         }
         catch (Exception e)
         {
             e.printStackTrace();
+            System.out.println("Server Stopped");
         }
         finally {
 

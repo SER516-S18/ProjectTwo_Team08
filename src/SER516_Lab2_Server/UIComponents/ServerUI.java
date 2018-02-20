@@ -164,7 +164,7 @@ public class ServerUI {
 		frequencyText.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(frequencyText);
 
-		frequencyText.addKeyListener(new KeyListener() {
+	/*	frequencyText.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 
@@ -182,7 +182,7 @@ public class ServerUI {
 			}
 
 		});
-		
+		*/
 	}
 
 

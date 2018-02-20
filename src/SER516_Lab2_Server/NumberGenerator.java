@@ -15,7 +15,7 @@ public class NumberGenerator{
     DataOutputStream dataOutputStream;
     ServerSocket serverSocket;
     int high, low, frequency, channels;
-    private Timer numberTimer = new Timer(1000, null);
+    public Timer numberTimer = new Timer(1000, null);
 
     /**
     * Constructor
