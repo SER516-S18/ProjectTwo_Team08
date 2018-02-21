@@ -1,6 +1,6 @@
 package SER516_Lab2_Client;
 
-import java.util.swing.*;
+import javax.swing.*;
 
 /**
  * Reads frequency from the GUI
@@ -17,12 +17,12 @@ public class ReadFrequency{
      * @param frequency
      */
 
-    public getInputFrequency(JTextPane frequency){
+    public int getInputFrequency(JTextPane frequency){
 
-        frequencyValue = defaultFrequency;
-        if(textPane.getText() != ""){
+        int frequencyValue = defaultFrequency;
+        if(frequency.getText() != ""){
             try{
-                frequencyValue = Integer.parseInt(textpane.getText());
+                frequencyValue = Integer.parseInt(frequency.getText());
             } catch(Exception e){
                 System.out.println("Non-integer value entered for frequency, default used.");
             }

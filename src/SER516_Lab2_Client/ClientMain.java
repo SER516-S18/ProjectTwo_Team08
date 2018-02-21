@@ -1,7 +1,7 @@
 package SER516_Lab2_Client;
 
 
-import SER516_Lab2_Client.UIComponents.ClientUI;
+import SER516_Lab2_Client.UIComponents.*;
 
 import java.awt.*;
 
@@ -15,6 +15,8 @@ class ClientMain {
 			public void run() {
 				try {
 					ClientUI window = new ClientUI();
+					window.pack();
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
