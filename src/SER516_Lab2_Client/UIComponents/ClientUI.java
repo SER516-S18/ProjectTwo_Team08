@@ -6,6 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 
+ /**
+   * @SER516 Lab2_Team08
+   * @author Aayushi Shah
+   * @Version 1.0
+   */
+
 public class ClientUI extends JFrame {
 
 	public ClientUI() {
