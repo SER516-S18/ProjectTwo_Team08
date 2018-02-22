@@ -1,6 +1,6 @@
 # ProjectTwo_Team08
 
-How to run (Only works on Linux/Unix machines for now)
+How to run
 
 1. clone project repository by running the following command.
 	
