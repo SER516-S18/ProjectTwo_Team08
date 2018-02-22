@@ -1,6 +1,8 @@
 package SER516_Lab2_Client;
 
 
+import java.io.IOException;
+
 /**
  * @author Ayan Shah
  * Client control class to start/stop the connection for the client socket to the server socket
@@ -21,6 +23,12 @@ public class ClientControl {
     }
 
     public void stop(){
+        try {
+            clientThread.clientSocket.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

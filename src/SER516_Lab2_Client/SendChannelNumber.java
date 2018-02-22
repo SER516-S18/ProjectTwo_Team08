@@ -23,7 +23,8 @@ public class SendChannelNumber {
     }
 
     private void setChannelNumber(String channels) {
-        channelValue = defaultChannels;
+        //channelValue = defaultChannels;
+
         if (channels != "") {
             try {
                 channelValue = Integer.parseInt(channels);

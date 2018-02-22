@@ -52,13 +52,15 @@ public class TopPanel extends JPanel {
 
         if(FLAG){
             String channels = controlsPanel.getChannels();
+            System.out.println("Channel- "+channels);
             String frequency = controlsPanel.getFrequency();
             System.out.println("Client start");
             clientControl.start(frequency, channels);
             this.FLAG = false;
 
         }else{
-
+            clientControl.stop();
+            this.FLAG = true;
         }
     }
 }
