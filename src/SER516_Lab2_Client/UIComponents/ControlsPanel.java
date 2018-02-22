@@ -22,11 +22,11 @@ public class ControlsPanel extends JPanel{
 
         setLayout(new GridLayout(0,2,10,10));
 
-        TextPane hvLabel = new TextPane("Highest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane lvLabel = new TextPane("Lowest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane avgLabel = new TextPane("Average\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane chLabel = new TextPane("Channels:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane fqLabel = new TextPane("Frequency (HZ):", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane highestValLabel = new TextPane("Highest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane lowestValLabel = new TextPane("Lowest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane averageValLabel = new TextPane("Average\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane channelValLabel = new TextPane("Channels:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane frequencyValLabel = new TextPane("Frequency (HZ):", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
 
         highestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
         lowestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
@@ -34,15 +34,15 @@ public class ControlsPanel extends JPanel{
         channels = createChannelsComboBox();
         frequency = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, true);
 
-        add(hvLabel);
+        add(highestValLabel);
         add(highestValue);
-        add(lvLabel);
+        add(lowestValLabel);
         add(lowestValue);
-        add(avgLabel);
+        add(averageValLabel);
         add(averageValue);
-        add(chLabel);
+        add(channelValLabel);
         add(channels);
-        add(fqLabel);
+        add(frequencyValLabel);
         add(frequency);
 
         Handlers.setContolPanel(this);
