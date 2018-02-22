@@ -19,7 +19,8 @@ public class ChartPanel extends JPanel {
     private void initComponents(){
 
         setBorder(new LineBorder(Color.black));
-        Handlers.setChartPanel(this);
+        setPreferredSize(new Dimension(400,100));
+        Handlers.getInstance().setChartPanel(this);
     }
 
     public void initChart(int channelCount, int frequency){
@@ -29,5 +30,10 @@ public class ChartPanel extends JPanel {
         add(chart);
         revalidate();
         repaint();
+    }
+
+    public void plotPoints(int[] values){
+
+        chart.plotPoints(values);
     }
 }
