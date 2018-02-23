@@ -5,12 +5,6 @@ import java.net.Socket;
 import java.net.SocketException;
 
 /**
-<<<<<<< HEAD
- * Client thread to write data to establish connection to the server
- * @author Shaunak Shah
- * @version 1.2
-* */
-=======
  * ClientThread.java-a class to govern reading data stream from serversocket
  * depending on the frequency defined by the user via GUI.
  *
@@ -18,7 +12,6 @@ import java.net.SocketException;
  * @author Chiranjeevi Ramamurthy
  * @version 1.0
  */
->>>>>>> 4e1379eca07784da5d309aac42c649c7b90162a7
 
 public class ClientThread implements Runnable {
 
@@ -29,12 +22,9 @@ public class ClientThread implements Runnable {
     private OutputStream outputStream;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-<<<<<<< HEAD
     public Socket clientSocket;
     private int channels;
-=======
     private int channelCount;
->>>>>>> 4e1379eca07784da5d309aac42c649c7b90162a7
     private int frequency;
 
 
