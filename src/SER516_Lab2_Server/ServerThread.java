@@ -62,14 +62,18 @@ public class ServerThread implements Runnable {
                     boolean isClientClosed = false;
                     try {
                         String val = dataInputStream.readUTF();
-                        channels = Integer.parseInt(val);
-                        System.out.println("Number of Channels:" + channels);
-                        numberGenerator.setChannels(channels);
-                        numberGenerator.Start();
-                    }catch (EOFException e){
-                        break;
+                     try {
+                         channels = Integer.parseInt(val);
+                         System.out.println("Number of Channels:" + channels);
+                         numberGenerator.setChannels(channels);
+                         numberGenerator.Start();
+                     }
+                     catch (NumberFormatException e)
+                     {
+                        System.out.println("Warning: Client is allowed to input number only for channels");
+                     }
                     }
-                    catch (SocketException e)
+                    catch (SocketException | EOFException e)
                     {
                         isClientClosed = true;
                         System.out.println("Client Connection closed");
