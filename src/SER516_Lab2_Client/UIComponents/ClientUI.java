@@ -6,19 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 
- /**
-   * @SER516 Lab2_Team08
-   * @author Aayushi Shah
-   * @Version 1.0
-   */
+/**
+ * Function initializes the main panel and divides them into three sections.
+ * @author Aayushi Shah
+ * @version 1.1
+ */
 
 public class ClientUI extends JFrame {
 
 	public ClientUI() {
-		initComponents();
-	}
-
-	private void initComponents() {
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout(20, 20));
 
