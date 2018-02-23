@@ -3,15 +3,13 @@ package SER516_Lab2_Client.UIComponents;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Function initializes the center panel and divides them into three sections.
+ */
+
 public class CenterPanel extends JPanel {
 
     public CenterPanel(){
-
-        initComponents();
-    }
-
-    private void initComponents(){
-
         setLayout(new BorderLayout());
         JPanel nestedPanel = new JPanel();
         ChartPanel chartPanel = new ChartPanel();
