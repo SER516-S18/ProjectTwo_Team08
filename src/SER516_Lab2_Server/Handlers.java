@@ -11,11 +11,21 @@ import javax.swing.JPanel;
 */
 
 public class Handlers {
+	
+	private static Handlers instance = null;
 
-    private static JPanel serverStatusPanel;
+    public static Handlers getInstance(){
+
+        if(instance == null)
+            instance = new Handlers();
+
+        return instance;
+    }
+
+    private static ServerStatusPanel serverStatusPanel;
    
     public static void setserverStatusPanel(JPanel panel){
-    	serverStatusPanel = panel;
+    	serverStatusPanel = (ServerStatusPanel)panel;
     }
 
 }
