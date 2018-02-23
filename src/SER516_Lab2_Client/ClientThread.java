@@ -1,11 +1,13 @@
 package SER516_Lab2_Client;
 
+import SER516_Lab2_Client.UIComponents.ControlsPanel;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 
 /**
-* @author Ayan Shah
+* @author Shaunak Shah
 * Client thread to write data to the server socket
 * */
 
@@ -17,17 +19,13 @@ public class ClientThread implements Runnable {
     private OutputStream outputStream;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    private String channels;
-    private String frequency;
-    private SendChannelNumber sendChannelNumber;
     public Socket clientSocket;
+    private ControlsPanel controlsPanel;
 
 
-    public ClientThread(String frequency, String channels){
-        this.frequency = frequency;
-        this.channels = channels;
+    public ClientThread(ControlsPanel controlsPanel){
+        this.controlsPanel = controlsPanel;
     }
-
 
     @Override
     public void run() {
@@ -37,8 +35,8 @@ public class ClientThread implements Runnable {
             inputStream = clientSocket.getInputStream();
             dataInputStream = new DataInputStream(inputStream);
             dataOutputStream = new DataOutputStream(outputStream);
+            sendChannelNumber(dataOutputStream);
 
-            sendChannelNumber = new SendChannelNumber(dataOutputStream, channels);
             while(true){
                 boolean isClientClosed = false;
                 try{
@@ -46,17 +44,24 @@ public class ClientThread implements Runnable {
                     System.out.println(data);
                 }catch (SocketException e){
                     isClientClosed = true;
+                    dataInputStream.close();
                     System.out.println("Client Connection closed");
                 }
                 if(isClientClosed)
                     break;
 
             }
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    private void sendChannelNumber(DataOutputStream outputStream) {
+        try {
+            outputStream.writeUTF(controlsPanel.getChannels());
+        } catch (Exception e) {
+            System.out.println("Unable to send channel value to the stream");
+        }
+    }
+
 }

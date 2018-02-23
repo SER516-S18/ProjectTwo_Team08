@@ -1,9 +1,6 @@
 package SER516_Lab2_Server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -69,6 +66,8 @@ public class ServerThread implements Runnable {
                         System.out.println("Number of Channels:" + channels);
                         numberGenerator.setChannels(channels);
                         numberGenerator.Start();
+                    }catch (EOFException e){
+                        break;
                     }
                     catch (SocketException e)
                     {
@@ -80,6 +79,7 @@ public class ServerThread implements Runnable {
                         break;
                 }
             }
+
             serverSocket.close();
             numberGenerator.Stop();
         }

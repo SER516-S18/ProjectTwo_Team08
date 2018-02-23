@@ -25,7 +25,7 @@ public class Handlers {
     private ClientControl clientControl;
 
     private Handlers(){
-        flag = false;
+        this.flag = false;
     }
 
     public void setContolPanel(JPanel panel){
@@ -48,18 +48,17 @@ public class Handlers {
     public void clientStartStop(){
 
         if(!flag){
+            this.flag = true;
             clientControl = new ClientControl();
             String channels = controlPanel.getChannels();
             System.out.println("Channel- "+channels);
             String frequency = controlPanel.getFrequency();
             System.out.println("Client start");
-            clientControl.start(frequency, channels);
+            clientControl.start(controlPanel);
             chartPanel.initChart(Integer.parseInt(channels), Integer.parseInt(frequency));
-            flag = true;
-
         }else{
             clientControl.stop();
-            flag = false;
+            this.flag = false;
         }
     }
 

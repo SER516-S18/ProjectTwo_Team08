@@ -1,6 +1,8 @@
 package SER516_Lab2_Client;
 
 
+import SER516_Lab2_Client.UIComponents.ControlsPanel;
+
 import java.io.IOException;
 
 /**
@@ -17,13 +19,14 @@ public class ClientControl {
         return clientThread;
     }
 
-    public void start(String frequency, String channels){
-        clientThread = new ClientThread(frequency,channels);
+    public void start(ControlsPanel controlsPanel){
+        clientThread = new ClientThread(controlsPanel);
         new Thread(clientThread).start();
     }
 
     public void stop(){
         try {
+            System.out.println("Close socket");
             clientThread.clientSocket.close();
 
         } catch (IOException e) {
