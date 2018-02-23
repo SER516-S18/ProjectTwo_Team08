@@ -51,15 +51,16 @@ public class ClientThread implements Runnable {
             while (true) {
                 boolean isClientClosed = false;
                 try {
-                    String data = dataInputStream.readUTF();
+                    String data = "";
+                    if(dataInputStream.available() > 0) {
+                        data = dataInputStream.readUTF();
+                    }
                     Handlers.getInstance().updateUI(data);
                     Thread.sleep(1000 / this.frequency);
-                } catch (SocketException e) {
+                } catch (IOException |InterruptedException e) {
                     isClientClosed = true;
                     dataInputStream.close();
                     System.out.println("Client Connection closed");
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
                 if (isClientClosed)
                     break;
