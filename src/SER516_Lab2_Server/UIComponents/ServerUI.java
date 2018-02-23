@@ -36,7 +36,7 @@ public class ServerUI extends JFrame {
 	private ServerControl serverControl;
 	private ServerThread serverThread;
 
-	/** 
+	/**
 	 * Initializes the contents of the frame.
 	 * @author Rhythm Sharma
 	 */
@@ -155,7 +155,7 @@ public class ServerUI extends JFrame {
 			}
 		});
 	}
-	
+
 	/**
 	 * Function initializes server frame and sets the attributes 
 	 * @author Rhythm Sharma

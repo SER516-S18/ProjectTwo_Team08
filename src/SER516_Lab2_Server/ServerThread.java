@@ -7,11 +7,12 @@ import java.net.SocketException;
 import java.util.Map;
 
 /**
- * Establishes socket connection with client and runs the server
- * @author Balachandar Sampath
- * @version 1.1
+ * @author Balachandar Sampath #97
+ * @version 0.2
+ * @since February 17, 2018
+ *
+ * This class implements establishing socket connection with client and communicating with the client
  */
-
 public class ServerThread implements Runnable {
     private int localPort;
     public ServerSocket serverSocket;
@@ -62,16 +63,16 @@ public class ServerThread implements Runnable {
                     boolean isClientClosed = false;
                     try {
                         String val = dataInputStream.readUTF();
-                     try {
-                         channels = Integer.parseInt(val);
-                         System.out.println("Number of Channels:" + channels);
-                         numberGenerator.setChannels(channels);
-                         numberGenerator.Start();
-                     }
-                     catch (NumberFormatException e)
-                     {
-                        System.out.println("Warning: Client is allowed to input number only for channels");
-                     }
+                        try {
+                            channels = Integer.parseInt(val);
+                            System.out.println("Number of Channels:" + channels);
+                            numberGenerator.setChannels(channels);
+                            numberGenerator.Start();
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            System.out.println("Warning: Client is allowed to input number only for channels");
+                        }
                     }
                     catch (SocketException | EOFException e)
                     {

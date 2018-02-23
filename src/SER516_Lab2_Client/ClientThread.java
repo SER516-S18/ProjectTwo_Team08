@@ -17,7 +17,6 @@ public class ClientThread implements Runnable {
 
     final String hostName = "localhost";
     final int portNumber = Consts.PORT_NUMBER;
-    public Socket clientSocket;
     private InputStream inputStream;
     private OutputStream outputStream;
     private DataInputStream dataInputStream;

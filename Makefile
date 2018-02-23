@@ -1,7 +1,6 @@
 # if this doesn't work, modify the JAVAC and JAVA variables with the actual 
 # path for javac and java on your machine. These can be found in the JDK
 # installation location.
-# Need to figure out why adding external jars to classpath is not working
 
 JAVAC = javac
 JAVA  = java
