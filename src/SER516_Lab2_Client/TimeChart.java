@@ -64,7 +64,7 @@ public class TimeChart extends JPanel{
 
         TimeSeriesCollection timeSeriesCollection = new TimeSeriesCollection();
         for(int i = 0; i < channelCount; i++){
-            series[i] = new TimeSeries("Channel "+i);
+            series[i] = new TimeSeries("Channel "+(i+1));
             timeSeriesCollection.addSeries(series[i]);
         }
         return timeSeriesCollection;
