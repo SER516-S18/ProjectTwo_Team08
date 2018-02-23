@@ -90,7 +90,6 @@ public class ServerThread implements Runnable {
         }
         catch (Exception e)
         {
-            e.printStackTrace();
             System.out.println("Server Stopped");
         }
     }
