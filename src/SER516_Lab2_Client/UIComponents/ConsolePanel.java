@@ -25,7 +25,7 @@ public class ConsolePanel extends JPanel{
         add(consoleTextPane, BorderLayout.CENTER);
         setBorder(BorderFactory.createLineBorder(Color.black));
 
-        Handlers.setConsolePanel(this);
+        Handlers.getInstance().setConsolePanel(this);
     }
 
     public void updateConsole(String text){
