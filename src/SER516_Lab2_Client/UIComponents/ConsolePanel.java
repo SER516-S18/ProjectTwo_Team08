@@ -27,8 +27,4 @@ public class ConsolePanel extends JPanel{
 
         Handlers.getInstance().setConsolePanel(this);
     }
-
-    public void updateConsole(String text){
-        consoleTextPane.appendText(text);
-    }
 }
