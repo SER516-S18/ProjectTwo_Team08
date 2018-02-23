@@ -5,6 +5,10 @@ import SER516_Lab2_Client.*;
 import javax.swing.*;
 import java.awt.*;
 
+ /**
+ * To initialize the control values in the center panel
+ */
+
 public class ControlsPanel extends JPanel{
 
     private TextPane highestValue;
@@ -14,12 +18,6 @@ public class ControlsPanel extends JPanel{
     private JComboBox<String> channels;
 
     public ControlsPanel(){
-
-        initComponents();
-    }
-
-    private void initComponents(){
-
         setLayout(new GridLayout(0,2,10,10));
 
         TextPane highestValLabel = new TextPane("Highest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
