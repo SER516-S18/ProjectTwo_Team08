@@ -4,17 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import SER516_Lab2_Client.*;
 
+ /**
+ * To initialize the console panel
+ */
+
 public class ConsolePanel extends JPanel{
 
     private TextPane consoleTextPane;
 
     public ConsolePanel() {
-
-        initComponents();
-    }
-
-    private void initComponents(){
-
         setLayout(new BorderLayout(0,0));
 
         TextPane consoleHeader = new TextPane("Console:", Consts.DEFAULT_FONT, SystemColor.controlHighlight, false, false);
