@@ -44,6 +44,7 @@ public class ClientThread implements Runnable {
                 boolean isClientClosed = false;
                 try{
                     String data = dataInputStream.readUTF();
+                    Handlers.getInstance().updateUI(data);
                     System.out.println(data);
                 }catch (SocketException e){
                     isClientClosed = true;

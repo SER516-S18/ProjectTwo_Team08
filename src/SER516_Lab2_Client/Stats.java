@@ -2,29 +2,20 @@ package SER516_Lab2_Client;
 
 public class Stats {
 
-    public static int maxValue = Integer.MIN_VALUE;
-    public static int minValue = Integer.MAX_VALUE;
-    public static int globalSum = 0;
-    public static int packetCount = 0;
+    private static int maxValue = Integer.MIN_VALUE;
+    private static int minValue = Integer.MAX_VALUE;
+    private static float runningAverage = 0;
+    private static int packetCount = 0;
 
     /** owner : Aashita Priya
      * computeMax computes the maximum of inputs across all channels
-     * @param inputString : input string value intercepted by the client (comma separated)
+     * @param inputVals : input array value intercepted by the client
      */
-    public static int computeMax(String inputString) {
-        String[] inputVals = null;
-        int iteratorVal = 0;
-        if(!"".equals(inputString)){
-            inputVals = inputString.split(",");
-        }
-        if(maxValue == Integer.MAX_VALUE){
-            maxValue = Integer.parseInt (inputVals[0]);
-            iteratorVal ++;
-        }
+    public static int computeMax(int[] inputVals) {
 
-        for(int i = iteratorVal; i < inputVals.length; i++){
-            if(Integer.parseInt (inputVals[i]) > maxValue){
-                maxValue = Integer.parseInt (inputVals[i]);
+        for(int i = 0; i < inputVals.length; i++){
+            if(inputVals[i] > maxValue){
+                maxValue = inputVals[i];
             }
         }
 
@@ -33,46 +24,32 @@ public class Stats {
 
     /** owner : Aashita Priya
      * computeMin computes the minimum of inputs across all channels
-     * @param inputString : input string value intercepted by the client (comma separated)
+     * @param inputVals : input array value intercepted by the client
      */
-    public static int computeMin(String inputString) {
-        String[] inputVals = null;
-        int iteratorVal = 0;
-        if(!"".equals(inputString)){
-            inputVals = inputString.split(",");
-        }
-        if(minValue == Integer.MIN_VALUE){
-            minValue = Integer.parseInt (inputVals[0]);
-            iteratorVal ++;
-        }
+    public static int computeMin(int[] inputVals) {
 
-        for(int i = iteratorVal; i < inputVals.length; i++){
-            if(Integer.parseInt (inputVals[i]) < minValue){
-                minValue = Integer.parseInt (inputVals[i]);
+        for(int i = 0; i < inputVals.length; i++){
+            if(inputVals[i] < minValue){
+                minValue = inputVals[i];
             }
         }
 
-        return minValue;
+        return minValue ;
     }
 
     /** owner : Aashita Priya
      * computeAverage computes the running average of inputs across all channels
-     * @param inputString : input string value intercepted by the client (comma separated)
+     * @param inputVals : input array value intercepted by the client
      */
-    public static float computeAverage(String inputString) {
-        String[] inputVals = null;
-        float runningAverage;
+    public static float computeAverage(int[] inputVals) {
 
-        if(!"".equals(inputString)){
-            inputVals = inputString.split(",");
-            packetCount += 1;
-        }
-
+        float localSum = 0;
         for(int i = 0; i < inputVals.length; i++){
-            globalSum += Integer.parseInt (inputVals[i]);
+            localSum += inputVals[i];
+            packetCount++;
         }
 
-        runningAverage = (float) globalSum / (packetCount * inputVals.length);
+        runningAverage = (runningAverage * (packetCount - inputVals.length))/packetCount + (localSum/packetCount);
 
         return runningAverage;
     }

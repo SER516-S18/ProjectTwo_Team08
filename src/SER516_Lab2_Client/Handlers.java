@@ -71,4 +71,25 @@ public class Handlers {
         }
     }
 
+    public void updateUI(String inputString){
+
+        if("".equals(inputString)) return;
+
+        String[] splitInputs = inputString.split(",");
+
+        int[] inputVals = new int[splitInputs.length];
+
+        for(int i= 0; i< splitInputs.length; i++){
+            inputVals[i] = Integer.parseInt(splitInputs[i]);
+        }
+
+
+        controlPanel.setHighestValue(Integer.toString(Stats.computeMax(inputVals)));
+        controlPanel.setLowestValue(Integer.toString(Stats.computeMin(inputVals)));
+        controlPanel.setAverageValue(Float.toString(Stats.computeAverage(inputVals)));
+
+        chartPanel.plotPoints(inputVals);
+    }
+
+
 }
