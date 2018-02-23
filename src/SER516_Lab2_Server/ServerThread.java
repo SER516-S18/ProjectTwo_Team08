@@ -44,8 +44,8 @@ public class ServerThread implements Runnable {
     public void run() {
         try{
             serverSocket = new ServerSocket(localPort);
-            System.out.println("Server Started");
-            System.out.println("This server is running on Port: "+Consts.PORT_NUMBER+".");
+            ServerUtils.displayConsoleMessage("Server Started");
+            ServerUtils.displayConsoleMessage("This server is running on Port: "+Consts.PORT_NUMBER+".");
             while (serverSocket.isBound() && !serverSocket.isClosed())
             {
                 clientSocket = serverSocket.accept();
@@ -65,19 +65,21 @@ public class ServerThread implements Runnable {
                         String val = dataInputStream.readUTF();
                         try {
                             channels = Integer.parseInt(val);
-                            System.out.println("Number of Channels:" + channels);
+                            ServerUtils.displayConsoleMessage("Number of Channels:" + channels);
                             numberGenerator.setChannels(channels);
                             numberGenerator.Start();
                         }
                         catch (NumberFormatException e)
                         {
-                            System.out.println("Warning: Client is allowed to input number only for channels");
+                            String errorMessage= "Warning: Client is allowed to input number only for channels";
+                            ServerUtils.displayConsoleMessage(errorMessage);
                         }
                     }
                     catch (SocketException | EOFException e)
                     {
                         isClientClosed = true;
-                        System.out.println("Client Connection closed");
+                        String errorMessage = "Client Connection closed";
+                        ServerUtils.displayConsoleMessage(errorMessage);
                         numberGenerator.numberTimer.stop();
                     }
                     if(isClientClosed)
@@ -90,7 +92,8 @@ public class ServerThread implements Runnable {
         }
         catch (Exception e)
         {
-            System.out.println("Server Stopped");
+            String errorMessage = "Server Stopped";
+            ServerUtils.displayConsoleMessage(errorMessage);
         }
     }
 }
