@@ -1,14 +1,13 @@
 package SER516_Lab2_Client;
 
-import SER516_Lab2_Client.UIComponents.ControlsPanel;
-
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 
 /**
-* @author Shaunak Shah
-* Client thread to write data to the server socket
+ * Client thread to write data to establish connection to the server
+ * @author Shaunak Shah
+ * @version 1.2
 * */
 
 public class ClientThread implements Runnable {
@@ -20,15 +19,20 @@ public class ClientThread implements Runnable {
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
     public Socket clientSocket;
-    private int channelCount;
+    private int channels;
     private int frequency;
 
 
     public ClientThread(int channelCount, int frequency){
 
-        this.channelCount = channelCount;
+        this.channels = channelCount;
         this.frequency = frequency;
     }
+
+    /**
+     * Creates client socket establishes connection with the server. Reads data received from the server at frequency
+     * mentioned earlier and passes it to handler for making changes to UI accordingly.
+     */
 
     @Override
     public void run() {
@@ -56,19 +60,24 @@ public class ClientThread implements Runnable {
                 }
                 if(isClientClosed)
                     break;
-
             }
-        } catch (IOException e) {
+        }catch (SocketException e){
+            System.out.println("Server Connection closed");
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Sends the number of channels to the server so that server can send the data back for specified channel
+     * number
+     */
+
     private void sendChannelNumber(DataOutputStream outputStream) {
         try {
-            outputStream.writeUTF(Integer.toString(channelCount));
+            outputStream.writeUTF(Integer.toString(channels));
         } catch (Exception e) {
             System.out.println("Unable to send channel value to the stream");
         }
     }
-
 }
