@@ -37,9 +37,8 @@ public class ServerUI extends JFrame {
 	private ServerThread serverThread;
 
 	/** 
-	 * Author: Rhythm Sharma
-	 * 
 	 * Initializes the contents of the frame.
+	 * @author Rhythm Sharma
 	 */
 	public ServerUI() {
 		serverControl = new ServerControl();
@@ -50,8 +49,8 @@ public class ServerUI extends JFrame {
 	}
 
 	/**
-	 * Author: Rhythm Sharma 
-	 * Function initializes view panel objects 
+	 * Function initializes view panel objects
+	 * @author Rhythm Sharma
 	 */
 	private void initializeViewPanelObjects() {
 		serverInstantiatedPanel = new JPanel();
@@ -110,8 +109,8 @@ public class ServerUI extends JFrame {
 	}
 
 	/**
-	 * Author: Rhythm Sharma 
 	 * Function initializes view panel and sets its objects and attributes 
+	 * @author Rhythm Sharma
 	 */
 	private void initializeViewPanel() {
 		viewPanel = new JPanel();
@@ -124,8 +123,8 @@ public class ServerUI extends JFrame {
 	}
 
 	/**
-	 * Author: Rhythm Sharma 
-	 * Function initializes console panel and sets the attributes 
+	 * Function initializes console panel and sets the attributes
+	 * @author Rhythm Sharma
 	 */
 	private void initializeConsoleTextPane() {
 		JTextPane consoleTextPane = new JTextPane();
@@ -139,8 +138,8 @@ public class ServerUI extends JFrame {
 	}
 
 	/**
-	 * Author: Rhythm Sharma 
-	 * Function initializes Start/ Stop button and sets its attributes 
+	 * Function initializes Start/ Stop button and sets its attributes  
+	 * @author Rhythm Sharma
 	 */
 	private void initializeStartStopBtn() {
 		JButton btnStartStop = new JButton("Start / Stop");
@@ -158,8 +157,8 @@ public class ServerUI extends JFrame {
 	}
 	
 	/**
-	 * Author: Rhythm Sharma 
 	 * Function initializes server frame and sets the attributes 
+	 * @author Rhythm Sharma
 	 */
 	private void intializeServerFrame() {
 		serverFrame = new JFrame();
@@ -173,8 +172,8 @@ public class ServerUI extends JFrame {
 	}
 
 	/**
-	 * Author Akash Sharma Function to Start/Stop Server and Update Server Status
-	 * 
+	 * Function to Start/Stop Server and Update Server Status
+	 * @author Akash Sharma
 	 * @param FLAG
 	 */
 
@@ -196,8 +195,9 @@ public class ServerUI extends JFrame {
 	}
 
 	/**
-	 * Author: Jason Rice toggles the highest, lowest, and frequency input fields
-	 * from allowing user input.
+	 * Function to toggle the highest, lowest, and frequency input fields
+	 * allowing user to input values.
+	 * @author Jason Rice
 	 */
 	private void toggleInputFields() {
 		highestValText.setEditable(!FLAG);
