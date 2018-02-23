@@ -20,11 +20,14 @@ public class ClientThread implements Runnable {
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
     public Socket clientSocket;
-    private ControlsPanel controlsPanel;
+    private int channelCount;
+    private int frequency;
 
 
-    public ClientThread(ControlsPanel controlsPanel){
-        this.controlsPanel = controlsPanel;
+    public ClientThread(int channelCount, int frequency){
+
+        this.channelCount = channelCount;
+        this.frequency = frequency;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class ClientThread implements Runnable {
 
     private void sendChannelNumber(DataOutputStream outputStream) {
         try {
-            outputStream.writeUTF(controlsPanel.getChannels());
+            outputStream.writeUTF(Integer.toString(channelCount));
         } catch (Exception e) {
             System.out.println("Unable to send channel value to the stream");
         }

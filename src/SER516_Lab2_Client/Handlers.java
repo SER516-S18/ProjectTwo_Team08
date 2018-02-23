@@ -5,6 +5,7 @@ import SER516_Lab2_Client.UIComponents.ConsolePanel;
 import SER516_Lab2_Client.UIComponents.ControlsPanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Handlers {
 
@@ -50,12 +51,20 @@ public class Handlers {
         if(!flag){
             this.flag = true;
             clientControl = new ClientControl();
-            String channels = controlPanel.getChannels();
+            int channels;
+            int frequency;
+            try {
+                channels = Integer.parseInt(controlPanel.getChannels());
+                frequency = Integer.parseInt(controlPanel.getFrequency());
+            }
+            catch (NumberFormatException e){
+                e.printStackTrace();
+                return;
+            }
             System.out.println("Channel- "+channels);
-            String frequency = controlPanel.getFrequency();
             System.out.println("Client start");
-            clientControl.start(controlPanel);
-            chartPanel.initChart(Integer.parseInt(channels), Integer.parseInt(frequency));
+            clientControl.start(channels, frequency);
+            chartPanel.initChart(channels, frequency);
         }else{
             clientControl.stop();
             this.flag = false;

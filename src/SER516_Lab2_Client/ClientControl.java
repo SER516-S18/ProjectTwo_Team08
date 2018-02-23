@@ -19,8 +19,8 @@ public class ClientControl {
         return clientThread;
     }
 
-    public void start(ControlsPanel controlsPanel){
-        clientThread = new ClientThread(controlsPanel);
+    public void start(int channelCount, int frequency){
+        clientThread = new ClientThread(channelCount, frequency);
         new Thread(clientThread).start();
     }
 
