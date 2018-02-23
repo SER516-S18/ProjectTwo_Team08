@@ -5,25 +5,40 @@ import java.net.Socket;
 import java.net.SocketException;
 
 /**
+<<<<<<< HEAD
  * Client thread to write data to establish connection to the server
  * @author Shaunak Shah
  * @version 1.2
 * */
+=======
+ * ClientThread.java-a class to govern reading data stream from serversocket
+ * depending on the frequency defined by the user via GUI.
+ *
+ * @author Shaunak Shah
+ * @author Chiranjeevi Ramamurthy
+ * @version 1.0
+ */
+>>>>>>> 4e1379eca07784da5d309aac42c649c7b90162a7
 
 public class ClientThread implements Runnable {
 
     final String hostName = "localhost";
     final int portNumber = Consts.PORT_NUMBER;
+    public Socket clientSocket;
     private InputStream inputStream;
     private OutputStream outputStream;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
+<<<<<<< HEAD
     public Socket clientSocket;
     private int channels;
+=======
+    private int channelCount;
+>>>>>>> 4e1379eca07784da5d309aac42c649c7b90162a7
     private int frequency;
 
 
-    public ClientThread(int channelCount, int frequency){
+    public ClientThread(int channelCount, int frequency) {
 
         this.channels = channelCount;
         this.frequency = frequency;
@@ -37,28 +52,27 @@ public class ClientThread implements Runnable {
     @Override
     public void run() {
         try {
-            clientSocket = new Socket(hostName,portNumber);
+            clientSocket = new Socket(hostName, portNumber);
             outputStream = clientSocket.getOutputStream();
             inputStream = clientSocket.getInputStream();
             dataInputStream = new DataInputStream(inputStream);
             dataOutputStream = new DataOutputStream(outputStream);
             sendChannelNumber(dataOutputStream);
 
-            while(true){
+            while (true) {
                 boolean isClientClosed = false;
-                try{
+                try {
                     String data = dataInputStream.readUTF();
                     Handlers.getInstance().updateUI(data);
-                    System.out.println(data);
-                    Thread.sleep(1000/this.frequency);
-                }catch (SocketException e){
+                    Thread.sleep(1000 / this.frequency);
+                } catch (SocketException e) {
                     isClientClosed = true;
                     dataInputStream.close();
                     System.out.println("Client Connection closed");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if(isClientClosed)
+                if (isClientClosed)
                     break;
             }
         }catch (SocketException e){
