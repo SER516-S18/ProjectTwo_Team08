@@ -7,16 +7,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * To initialize the Start/Stop button in the Top Panel
+ */
+
 public class TopPanel extends JPanel {
 
     private JButton btnStartStop;
 
     public TopPanel(){
-        initComponents();
-    }
-
-    private void initComponents(){
-
         setLayout(new BorderLayout());
         btnStartStop = new JButton("Start / Stop");
         btnStartStop.setBackground(Consts.PINK);
