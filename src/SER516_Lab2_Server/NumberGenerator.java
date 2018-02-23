@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import java.net.ServerSocket;
-
 /**
 * Class for generating the numbers based o 
 * @author Jason Rice
@@ -34,7 +33,7 @@ public class NumberGenerator{
         if(dataOutputStream != null){
             generateNumbersForOutput();
         } else {
-            System.out.println("NumberGenerator(ln35): No DataOutputStream");
+            ServerUtils.displayConsoleMessage("NumberGenerator(ln35): No DataOutputStream");
         }
     }
 
@@ -71,7 +70,8 @@ public class NumberGenerator{
                 try{
                     dataOutputStream.writeUTF(outPut);
                 } catch(Exception e){
-                    System.out.println("Client connection closed.");
+                    String errorMessage = "Client connection closed.";
+                    ServerUtils.displayConsoleMessage(errorMessage);
                     numberTimer.stop();
                 } 
             } 

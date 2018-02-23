@@ -60,7 +60,8 @@ public class InputFieldExtractor{
 			try{
 				ret = Integer.parseInt(inputField.getText());
 			} catch(Exception e){
-				System.out.println("non-integer value entered for Highest, default used.");
+				String errorMessage = "non-integer value entered for Highest, default used.";
+				ServerUtils.displayConsoleMessage(errorMessage);
 			}
 		}
 		return ret;

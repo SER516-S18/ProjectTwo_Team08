@@ -4,7 +4,6 @@ import SER516_Lab2_Server.ServerControl;
 import SER516_Lab2_Server.ServerThread;
 import SER516_Lab2_Server.InputFieldExtractor;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -14,8 +13,6 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
@@ -29,7 +26,8 @@ public class ServerUI extends JFrame {
 	private JTextPane highestValText;
 	private JTextPane lowestValText;
 	private JTextPane frequencyText;
-	private boolean FLAG = false;
+	private static JTextPane consoleTextPane;
+	private boolean isServerRunning = false;
 	private final Color BLUE = new Color(207, 220, 239);
 	private final Color LIGHTBLUE = new Color(228, 232, 241);
 	private final Color PINK = new Color(237, 219, 219);
@@ -70,6 +68,7 @@ public class ServerUI extends JFrame {
 
 		highestValText = new JTextPane();
 		highestValText.setBounds(600, 16, 129, 62);
+		highestValText.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		viewPanel.add(highestValText);
 		highestValText.setBackground(this.PINK);
 		highestValText.setEditable(true);
@@ -86,6 +85,7 @@ public class ServerUI extends JFrame {
 
 		lowestValText = new JTextPane();
 		lowestValText.setEditable(true);
+		lowestValText.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		lowestValText.setBackground(this.LIGHTBLUE);
 		lowestValText.setBounds(600, 94, 129, 62);
 		lowestValText.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -102,6 +102,7 @@ public class ServerUI extends JFrame {
 
 		frequencyText = new JTextPane();
 		frequencyText.setEditable(true);
+		frequencyText.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		frequencyText.setBackground(this.PINK);
 		frequencyText.setBounds(600, 172, 129, 62);
 		frequencyText.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -127,7 +128,7 @@ public class ServerUI extends JFrame {
 	 * @author Rhythm Sharma
 	 */
 	private void initializeConsoleTextPane() {
-		JTextPane consoleTextPane = new JTextPane();
+		consoleTextPane = new JTextPane();
 		consoleTextPane.setFont(new Font("Monospaced", Font.PLAIN, 20));
 		consoleTextPane.setText("Console:");
 		consoleTextPane.setEditable(false);
@@ -151,7 +152,7 @@ public class ServerUI extends JFrame {
 
 		btnStartStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				serverStartStop(FLAG);
+				serverStartStop(isServerRunning);
 			}
 		});
 	}
@@ -184,11 +185,11 @@ public class ServerUI extends JFrame {
 			Map<String, Integer> inputValues = ife.getInputValues(highestValText, lowestValText, frequencyText);
 			serverControl.start(inputValues);
 			serverThread = serverControl.getServerThread();
-			this.FLAG = true;
+			this.isServerRunning = true;
 			this.serverInstantiatedPanel.setBackground(Color.GREEN);
 		} else {
 			serverControl.stop();
-			this.FLAG = false;
+			this.isServerRunning = false;
 			this.serverInstantiatedPanel.setBackground(Color.RED);
 		}
 		toggleInputFields();
@@ -200,8 +201,16 @@ public class ServerUI extends JFrame {
 	 * @author Jason Rice
 	 */
 	private void toggleInputFields() {
-		highestValText.setEditable(!FLAG);
-		lowestValText.setEditable(!FLAG);
-		frequencyText.setEditable(!FLAG);
+		highestValText.setEditable(!isServerRunning);
+		lowestValText.setEditable(!isServerRunning);
+		frequencyText.setEditable(!isServerRunning);
+	}
+
+	public static JTextPane getConsoleTextPane() {
+		return consoleTextPane;
+	}
+
+	public static void setConsoleTextPane(JTextPane newConsoleTextPane) {
+		consoleTextPane = newConsoleTextPane;
 	}
 }

@@ -2,7 +2,6 @@ package SER516_Lab2_Server;
 
 import java.io.IOException;
 import java.util.Map;
-
 /**
  * @author Balachandar Sampath #97
  * @version 0.1
@@ -33,7 +32,8 @@ public class ServerControl {
         try {
             serverThread.serverSocket.close();
         } catch (Exception e) {
-            System.out.println("Server Stopped");
+            String errorMessage ="Server Stopped";
+            ServerUtils.displayConsoleMessage(errorMessage);
         }
     }
 }
