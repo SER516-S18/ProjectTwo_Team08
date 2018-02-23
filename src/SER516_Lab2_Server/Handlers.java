@@ -23,7 +23,7 @@ public class Handlers {
     }
 
     private static ServerStatusPanel serverStatusPanel;
-   
+
     public static void setserverStatusPanel(JPanel panel){
     	serverStatusPanel = (ServerStatusPanel)panel;
     }
