@@ -9,7 +9,6 @@ import java.net.SocketException;
  * depending on the frequency defined by the user via GUI.
  *
  * @author Shaunak Shah
- * @author Ayan Shah
  * @author Chiranjeevi Ramamurthy
  * @version 1.0
  */
@@ -71,7 +70,8 @@ public class ClientThread implements Runnable {
             String errorMessage = "Server Connection closed";
     		Handlers.getInstance().displayConsoleMessage(errorMessage);
         }catch (IOException e) {
-            e.printStackTrace();
+            String errorMessage = "Socket is not setup, IOException";
+    		Handlers.getInstance().displayConsoleMessage(errorMessage);
         }
     }
 
@@ -99,7 +99,8 @@ public class ClientThread implements Runnable {
             outputStream.close();
             clientSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+        	String errorMessage = "Thread not closed, IOException";
+    		Handlers.getInstance().displayConsoleMessage(errorMessage);
         }
     }
 }

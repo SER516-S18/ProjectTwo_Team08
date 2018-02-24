@@ -80,7 +80,7 @@ public class Handlers {
     
     public void displayConsoleMessage(String errorMessage)
     {
-        consolePanel.updateConsole(errorMessage + "\n");
+        Handlers.getInstance().consolePanel.updateConsole(errorMessage + "\n");
     }
 
     /**
@@ -99,7 +99,8 @@ public class Handlers {
                 channels = Integer.parseInt(controlPanel.getChannels());
                 frequency = Integer.parseInt(controlPanel.getFrequency());
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+            	String errorMessage = "NumberFormatException";
+        		Handlers.getInstance().displayConsoleMessage(errorMessage);
                 this.flag = false;
                 return;
             }
