@@ -23,16 +23,16 @@ public class ControlsPanel extends JPanel{
     public ControlsPanel(){
         setLayout(new GridLayout(0,2,10,10));
 
-        TextPane highestValLabel = new TextPane("Highest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane lowestValLabel = new TextPane("Lowest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane averageValLabel = new TextPane("Average\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane channelValLabel = new TextPane("Channels:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane frequencyValLabel = new TextPane("Frequency (HZ):", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane highestValLabel = new TextPane(" Highest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane lowestValLabel = new TextPane(" Lowest\r\nValue:", Consts.DEFAULT_FONT, Consts.PINK,true, false);
+        TextPane averageValLabel = new TextPane(" Average\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane channelValLabel = new TextPane(" Channels:", Consts.DEFAULT_FONT, Consts.PINK,true, false);
+        TextPane frequencyValLabel = new TextPane(" Frequency\r\n (HZ):", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
 
         highestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
-        lowestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
+        lowestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
         averageValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
-        channels = new ComboBox(Consts.CHANNELS, Consts.DEFAULT_FONT, Consts.PINK, true, false);
+        channels = new ComboBox(Consts.CHANNELS, Consts.DEFAULT_FONT, Consts.LIGHTBLUE, true, false);
         frequency = new TextPane(DEFAULT_FREQUENCY, Consts.DEFAULT_FONT, Consts.PINK,true, true);
 
         add(highestValLabel);
