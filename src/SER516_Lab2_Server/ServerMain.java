@@ -15,7 +15,6 @@ class ServerMain {
 				try {
 					ServerUI window = new ServerUI();
 				} catch (Exception e) {
-					//e.printStackTrace();
 					ServerUtils.displayConsoleMessage(e.toString());
 				}
 			}
