@@ -20,7 +20,7 @@ class ClientMain {
 				} catch (Exception e) {
 					e.printStackTrace();
 					String errorMessage = "No Client window set.";
-					Handlers.displayConsoleMessage(errorMessage);
+					Handlers.getInstance().displayConsoleMessage(errorMessage);
 				}
 			}
 		});

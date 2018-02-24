@@ -4,18 +4,12 @@ import SER516_Lab2_Server.ServerControl;
 import SER516_Lab2_Server.ServerThread;
 import SER516_Lab2_Server.InputFieldExtractor;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
-import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import javax.swing.SwingConstants;
 import java.util.Map;
 
 public class ServerUI extends JFrame {
@@ -27,6 +21,7 @@ public class ServerUI extends JFrame {
 	private JTextPane lowestValText;
 	private JTextPane frequencyText;
 	private static JTextPane consoleTextPane;
+	private static JScrollBar scrollBar;
 	private boolean isServerRunning = false;
 	private final Color BLUE = new Color(207, 220, 239);
 	private final Color LIGHTBLUE = new Color(228, 232, 241);
@@ -131,14 +126,17 @@ public class ServerUI extends JFrame {
 	 * @author Rhythm Sharma
 	 */
 	private void initializeConsoleTextPane() {
+
 		consoleTextPane = new JTextPane();
 		consoleTextPane.setFont(new Font("Monospaced", Font.PLAIN, 20));
 		consoleTextPane.setText("Console:");
 		consoleTextPane.setEditable(false);
 		consoleTextPane.setBackground(SystemColor.controlHighlight);
-		consoleTextPane.setBounds(15, 512, 743, 90);
-		consoleTextPane.setBorder(BorderFactory.createLineBorder(Color.black));
-		serverFrame.getContentPane().add(consoleTextPane);
+		JScrollPane scrollPane = new JScrollPane(consoleTextPane);
+		scrollBar = scrollPane.getVerticalScrollBar();
+		scrollPane.setBounds(15, 512, 743, 90);
+		scrollPane.setBorder(BorderFactory.createLineBorder(Color.black));
+		serverFrame.getContentPane().add(scrollPane);
 	}
 
 	/**
@@ -228,5 +226,6 @@ public class ServerUI extends JFrame {
 
 	public static void setConsoleTextPane(String message) {
 		consoleTextPane.setText(consoleTextPane.getText() +message);
+		scrollBar.setValue(scrollBar.getMaximum());
 	}
 }
