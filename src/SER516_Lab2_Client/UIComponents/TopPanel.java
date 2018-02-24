@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * To initialize the Start/Stop button in the Top Panel
+ * To initialize the Start/Stop button in the Top Pane
+ * @author Aayushi Shah
+ * @version 1.0
  */
 
 public class TopPanel extends JPanel {
