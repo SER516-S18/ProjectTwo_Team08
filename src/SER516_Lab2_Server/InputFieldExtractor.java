@@ -8,7 +8,7 @@ import java.util.Map;
 /**
 * Validates/formats the input entered through the UI
 * @author Jason Rice
-* @version 1.0
+* @version 1
 */
 public class InputFieldExtractor{
 	final int defualtHigh = 10;
@@ -71,7 +71,7 @@ public class InputFieldExtractor{
 		if(inputField.getText() != ""){
 			try{
 				returnValue = Integer.parseInt(inputField.getText().trim());
-			} catch(Exception e){
+			} catch(Exception exception){
 				String errorMessage = "non-integer value entered for Highest, default used.";
 				ServerUtils.displayConsoleMessage(errorMessage);
 				inputField.setText("" + defaultVal);
