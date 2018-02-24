@@ -13,7 +13,7 @@ import javax.swing.BorderFactory;
 /**
  * Function initializes the main panel and divides them into three sections.
  * @author Aayushi Shah
- * @version 1.1
+ * @version 1.0
  */
 
 public class ClientUI extends JFrame {
