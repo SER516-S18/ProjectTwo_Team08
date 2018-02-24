@@ -21,7 +21,7 @@ For Windows
     java -cp ../lib/jfreechart-1.0.19.jar;../lib/jcommon-1.0.23.jar;. SER516_Lab2_Client.ClientMain
     ```
     
-For Ubuntu
+For Mac and Ubuntu
 
 1. clone project repository by running the following command.
 	```

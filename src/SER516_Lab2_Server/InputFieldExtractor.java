@@ -55,15 +55,15 @@ public class InputFieldExtractor{
 	* @param defaultVal
 	*/
 	private int validateInputFromField(JTextPane inputField, int defaultVal){
-		int ret = defaultVal;
+		int returnValue = defaultVal;
 		if(inputField.getText() != ""){
 			try{
-				ret = Integer.parseInt(inputField.getText());
+				returnValue = Integer.parseInt(inputField.getText());
 			} catch(Exception e){
 				String errorMessage = "non-integer value entered for Highest, default used.";
 				ServerUtils.displayConsoleMessage(errorMessage);
 			}
 		}
-		return ret;
+		return returnValue;
 	}
 }
