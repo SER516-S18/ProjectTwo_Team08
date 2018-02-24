@@ -23,9 +23,9 @@ public class ControlsPanel extends JPanel{
     public ControlsPanel(){
         setLayout(new GridLayout(0,2,10,10));
 
-        TextPane highestValLabel = new TextPane(" Highest\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
-        TextPane lowestValLabel = new TextPane(" Lowest\r\nValue:", Consts.DEFAULT_FONT, Consts.PINK,true, false);
-        TextPane averageValLabel = new TextPane(" Average\r\nValue:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane highestValLabel = new TextPane(" Highest\r\n Value:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
+        TextPane lowestValLabel = new TextPane(" Lowest\r\n Value:", Consts.DEFAULT_FONT, Consts.PINK,true, false);
+        TextPane averageValLabel = new TextPane(" Average\r\n Value:", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
         TextPane channelValLabel = new TextPane(" Channels:", Consts.DEFAULT_FONT, Consts.PINK,true, false);
         TextPane frequencyValLabel = new TextPane(" Frequency\r\n (HZ):", Consts.DEFAULT_FONT, Consts.LIGHTBLUE,true, false);
 
