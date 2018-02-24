@@ -7,8 +7,9 @@ public class Stats {
     private static float runningAverage = 0;
     private static int packetCount = 0;
 
-    /** owner : Aashita Priya
-     * computeMax computes the maximum of inputs across all channels
+    /** 
+     * Function computeMax computes the maximum of inputs across all channels  
+     * @author Aashita Priya
      * @param inputVals : input array value intercepted by the client
      */
     public static int computeMax(int[] inputVals) {
@@ -22,8 +23,9 @@ public class Stats {
         return maxValue;
     }
 
-    /** owner : Aashita Priya
-     * computeMin computes the minimum of inputs across all channels
+    /** 
+     * Function computeMin computes the minimum of inputs across all channels
+     * @author Aashita Priya
      * @param inputVals : input array value intercepted by the client
      */
     public static int computeMin(int[] inputVals) {
@@ -37,8 +39,9 @@ public class Stats {
         return minValue ;
     }
 
-    /** owner : Aashita Priya
-     * computeAverage computes the running average of inputs across all channels
+    /** 
+     * Function computeAverage computes the running average of inputs across all channels
+     * @author Aashita Priya
      * @param inputVals : input array value intercepted by the client
      */
     public static float computeAverage(int[] inputVals) {
