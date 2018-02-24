@@ -5,7 +5,9 @@ import java.awt.*;
 
 public class TextPane  extends JTextPane{
 
-    //private JTextPane textPane;
+
+    private Color background;
+
     public TextPane(){
     }
 
@@ -23,6 +25,7 @@ public class TextPane  extends JTextPane{
             setFont(font);
         else
             setFont(null);
+        this.background = background;
         setBackground(background);
         setEditable(isEditable);
         if(hasBorder) setBorder(BorderFactory.createLineBorder(Color.black));
@@ -34,5 +37,17 @@ public class TextPane  extends JTextPane{
 
     public void appendText(String text){
         setText(getText() + text);
+    }
+
+    @Override
+    public void setEnabled(boolean b){
+
+        super.setEnabled(b);
+        if(b){
+            setBackground(background);
+        }else{
+            background = getBackground();
+            setBackground(Color.LIGHT_GRAY);
+        }
     }
 }
