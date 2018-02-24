@@ -49,16 +49,6 @@ public class ControlsPanel extends JPanel{
         Handlers.getInstance().setContolPanel(this);
     }
 
-
-    private JComboBox<String> createChannelsComboBox(){
-        JComboBox<String> noOfChannels = new JComboBox<>();
-        noOfChannels.setFont(Consts.DEFAULT_FONT);
-        noOfChannels.setModel(new DefaultComboBoxModel<>(Consts.CHANNELS));
-        noOfChannels.setBackground(Consts.PINK);
-        noOfChannels.setBorder(BorderFactory.createLineBorder(Color.black));
-        return noOfChannels;
-    }
-
     public void setEnabled(boolean b){
 
         channels.setEnabled(b);
