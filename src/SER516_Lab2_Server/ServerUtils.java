@@ -14,10 +14,10 @@ public class ServerUtils {
      */
     public static void displayConsoleMessage(String errorMessage)
     {
-        JTextPane consoleTextPane = new JTextPane();
-        consoleTextPane = ServerUI.getConsoleTextPane();
-        consoleTextPane.setText("Console:" + errorMessage);
-        ServerUI.setConsoleTextPane(consoleTextPane);
+        //JTextPane consoleTextPane = new JTextPane();
+        //consoleTextPane = ServerUI.getConsoleTextPane();
+        //consoleTextPane.setText("Console:" + errorMessage);
+        ServerUI.setConsoleTextPane(errorMessage);
     }
 
 }
