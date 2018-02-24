@@ -19,8 +19,8 @@ class ClientMain {
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-					String errorMessage = "No Client window set.";
-					Handlers.displayConsoleMessage(errorMessage);
+					String errorMessage = "ClientUI not set.";
+					Handlers.getInstance().displayConsoleMessage(errorMessage);
 				}
 			}
 		});
@@ -30,7 +30,7 @@ class ClientMain {
 
 		initialiseGUI();
 		String message = "This client is running on Port: \" + Consts.PORT_NUMBER + \".";
-		Handlers.displayConsoleMessage(message);
+		Handlers.getInstance().displayConsoleMessage(message);
 	}
 
 
