@@ -19,6 +19,8 @@ class ClientMain {
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
+					String errorMessage = "No Client window set.";
+					Handlers.displayConsoleMessage(errorMessage);
 				}
 			}
 		});
@@ -27,8 +29,8 @@ class ClientMain {
 	public static void main(String[] args){
 
 		initialiseGUI();
-		System.out.println("This client is running on Port: " + Consts.PORT_NUMBER + ".");
-
+		String message = "This client is running on Port: \" + Consts.PORT_NUMBER + \".";
+		Handlers.displayConsoleMessage(message);
 	}
 
 
