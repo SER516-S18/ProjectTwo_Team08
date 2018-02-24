@@ -17,6 +17,7 @@ public class ChartPanel extends JPanel {
 
     public ChartPanel(){
         setLayout(new BorderLayout());
+        setBackground(Consts.PINK);
         setBorder(new LineBorder(Color.black));
         setPreferredSize(new Dimension(750,300));
         Handlers.getInstance().setChartPanel(this);
