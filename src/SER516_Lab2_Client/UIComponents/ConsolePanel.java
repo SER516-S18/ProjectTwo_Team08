@@ -6,6 +6,7 @@ import SER516_Lab2_Client.*;
 
  /**
  * To initialize the console panel
+ * @author Aayushi Shah
  */
 
 public class ConsolePanel extends JPanel{
