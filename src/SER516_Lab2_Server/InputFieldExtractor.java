@@ -70,7 +70,7 @@ public class InputFieldExtractor{
 		int returnValue = defaultVal;
 		if(inputField.getText() != ""){
 			try{
-				returnValue = Integer.parseInt(inputField.getText());
+				returnValue = Integer.parseInt(inputField.getText().trim());
 			} catch(Exception e){
 				String errorMessage = "non-integer value entered for Highest, default used.";
 				ServerUtils.displayConsoleMessage(errorMessage);
