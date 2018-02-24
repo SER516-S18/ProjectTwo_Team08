@@ -27,14 +27,19 @@ public class InputFieldExtractor{
 		JTextPane lowInput, JTextPane frequencyInput){
 
 		Map<String, Integer> values = new HashMap<String, Integer>();
-		int high, low;
+		int high, low, frequency;
 		
 		high = validateInputFromField(highInput, defualtHigh);
 		low = validateInputFromField(lowInput, defualtLow);
+		frequency = validateInputFromField(frequencyInput, defualtFrequency);
 
 		if(low > high){
 			values.put("high", low);
 			values.put("low", high);
+			highInput.setText("" + low);
+			lowInput.setText("" + high);
+			ServerUtils.displayConsoleMessage(
+				"Highest and Lowest values switched.");
 		} else if(low == high){
 			values.put("high", high - 1);
 			values.put("low", low);
@@ -43,8 +48,15 @@ public class InputFieldExtractor{
 			values.put("low", low);
 		}
 
-		values.put("frequency", validateInputFromField(frequencyInput, defualtFrequency));
-
+		if(frequency < 0){
+			ServerUtils.displayConsoleMessage(
+				"Frequency entered was converted to a positive value.");
+			values.put("frequency", -1 * frequency);
+			frequencyInput.setText("" + (-1 * frequency));
+		} else{
+			values.put("frequency", frequency);
+		}
+		
 		return values;
 	}
 
@@ -62,6 +74,7 @@ public class InputFieldExtractor{
 			} catch(Exception e){
 				String errorMessage = "non-integer value entered for Highest, default used.";
 				ServerUtils.displayConsoleMessage(errorMessage);
+				inputField.setText("" + defaultVal);
 			}
 		}
 		return returnValue;
