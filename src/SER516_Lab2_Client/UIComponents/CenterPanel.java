@@ -15,6 +15,7 @@ public class CenterPanel extends JPanel {
         ChartPanel chartPanel = new ChartPanel();
         ControlsPanel controlsPanel = new ControlsPanel();
 
+        setBackground(SystemColor.controlHighlight);
         nestedPanel.setLayout(new BorderLayout(10,10));
         nestedPanel.add(chartPanel, BorderLayout.CENTER);
         nestedPanel.add(controlsPanel, BorderLayout.EAST);
