@@ -98,8 +98,14 @@ public class Handlers {
             try {
                 channels = Integer.parseInt(controlPanel.getChannels());
                 frequency = Integer.parseInt(controlPanel.getFrequency());
+                if (frequency < 0) {
+                    frequency *= -1;
+                    controlPanel.setFrequency(frequency);
+                    String errorMessage = "Frequency should be a positive value.";
+                    Handlers.getInstance().displayConsoleMessage(errorMessage);
+                }
             } catch (NumberFormatException e) {
-            	String errorMessage = "NumberFormatException";
+            	String errorMessage = "Frequency is not valid";
         		Handlers.getInstance().displayConsoleMessage(errorMessage);
                 this.flag = false;
                 return;

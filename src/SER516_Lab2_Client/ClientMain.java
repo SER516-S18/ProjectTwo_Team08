@@ -28,8 +28,6 @@ class ClientMain {
 	public static void main(String[] args){
 
 		initialiseGUI();
-		String message = "This client is running on Port: \" + Consts.PORT_NUMBER + \".";
-		Handlers.getInstance().displayConsoleMessage(message);
 	}
 
 
