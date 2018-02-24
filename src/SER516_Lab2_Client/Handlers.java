@@ -23,7 +23,6 @@ public class Handlers {
     private ChartPanel chartPanel;
     private ConsolePanel consolePanel;
     private boolean flag;
-    private ClientControl clientControl;
     private int[] data;
     private Thread runClientThread;
     private ClientThread clientThread;
@@ -64,19 +63,17 @@ public class Handlers {
                 this.flag = false;
                 return;
             }
+            chartPanel.initChart(channels, frequency);
             clientThread = new ClientThread(channels, frequency);
             runClientThread = new Thread(clientThread);
             runClientThread.start();
 
-            chartPanel.initChart(channels, frequency);
+
 
         } else if (runClientThread.isAlive()) {
             this.flag = false;
-            try {
-                clientThread.clientSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            this.data = null;
+            clientThread.close();
         }
     }
 

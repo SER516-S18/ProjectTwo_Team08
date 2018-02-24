@@ -15,16 +15,16 @@ import java.net.SocketException;
 
 public class ClientThread implements Runnable {
 
-    final String hostName = "localhost";
-    final int portNumber = Consts.PORT_NUMBER;
+    private final String hostName = "localhost";
+    private final int portNumber = Consts.PORT_NUMBER;
     private InputStream inputStream;
     private OutputStream outputStream;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    public Socket clientSocket;
+    private Socket clientSocket;
     private int channels;
-    private int channelCount;
     private int frequency;
+    boolean isClientClosed = false;
 
 
     public ClientThread(int channelCount, int frequency) {
@@ -48,12 +48,12 @@ public class ClientThread implements Runnable {
             dataOutputStream = new DataOutputStream(outputStream);
             sendChannelNumber(dataOutputStream);
 
-            while (true) {
-                boolean isClientClosed = false;
+            while (!isClientClosed) {
                 try {
                     String data = "";
                     if(dataInputStream.available() > 0) {
                         data = dataInputStream.readUTF();
+                        System.out.println(data);
                     }
                     Handlers.getInstance().updateUI(data);
                     Thread.sleep(1000 / this.frequency);
@@ -82,6 +82,20 @@ public class ClientThread implements Runnable {
             outputStream.writeUTF(Integer.toString(channels));
         } catch (Exception e) {
             System.out.println("Unable to send channel value to the stream");
+        }
+    }
+
+    public void close(){
+
+        try {
+            isClientClosed = true;
+            dataInputStream.close();
+            dataOutputStream.close();
+            inputStream.close();
+            outputStream.close();
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
