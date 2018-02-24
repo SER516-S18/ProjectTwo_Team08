@@ -9,6 +9,7 @@ import java.net.SocketException;
  * depending on the frequency defined by the user via GUI.
  *
  * @author Shaunak Shah
+ * @author Ayan Shah
  * @author Chiranjeevi Ramamurthy
  * @version 1.0
  */
