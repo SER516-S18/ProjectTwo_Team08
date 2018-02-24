@@ -53,7 +53,6 @@ public class ClientThread implements Runnable {
                     String data = "";
                     if(dataInputStream.available() > 0) {
                         data = dataInputStream.readUTF();
-                        System.out.println(data);
                     }
                     Handlers.getInstance().updateUI(data);
                     Thread.sleep(1000 / this.frequency);
