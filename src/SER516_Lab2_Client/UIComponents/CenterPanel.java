@@ -5,6 +5,7 @@ import java.awt.*;
 
 /**
  * Function initializes the center panel and divides them into three sections.
+ * @author Aayushi Shah
  */
 
 public class CenterPanel extends JPanel {
