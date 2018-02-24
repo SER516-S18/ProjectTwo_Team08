@@ -32,8 +32,8 @@ public class ControlsPanel extends JPanel{
         highestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
         lowestValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
         averageValue = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, false);
-        channels = createChannelsComboBox();
-        frequency = new TextPane("", Consts.DEFAULT_FONT, Consts.PINK,true, true);
+        channels = new ComboBox(Consts.CHANNELS, Consts.DEFAULT_FONT, Consts.PINK, true, false);
+        frequency = new TextPane(DEFAULT_FREQUENCY, Consts.DEFAULT_FONT, Consts.PINK,true, true);
 
         add(highestValLabel);
         add(highestValue);
@@ -47,16 +47,6 @@ public class ControlsPanel extends JPanel{
         add(frequency);
 
         Handlers.getInstance().setControlPanel(this);
-    }
-
-
-    private JComboBox<String> createChannelsComboBox(){
-        JComboBox<String> noOfChannels = new JComboBox<String>();
-        noOfChannels.setFont(Consts.DEFAULT_FONT);
-        noOfChannels.setModel(new DefaultComboBoxModel<String>(Consts.CHANNELS));
-        noOfChannels.setBackground(Consts.PINK);
-        noOfChannels.setBorder(BorderFactory.createLineBorder(Color.black));
-        return noOfChannels;
     }
 
     public void setEnabled(boolean b){
@@ -87,5 +77,34 @@ public class ControlsPanel extends JPanel{
 
     public void setAverageValue(String value){
         averageValue.setText(value);
+    }
+
+    private class ComboBox extends JComboBox<String>{
+
+        private Color background;
+
+        public ComboBox(String[] model, Font font, Color background, boolean hasBorder, boolean isEditable){
+            setModel(new DefaultComboBoxModel<>(model));
+            if(font != null)
+                setFont(font);
+            else
+                setFont(null);
+            this.background = background;
+            setBackground(background);
+            setEditable(isEditable);
+            if(hasBorder) setBorder(BorderFactory.createLineBorder(Color.black));
+        }
+
+        @Override
+        public void setEnabled(boolean b){
+
+            super.setEnabled(b);
+            if(b){
+                setBackground(background);
+            }else{
+                background = getBackground();
+                setBackground(Color.LIGHT_GRAY);
+            }
+        }
     }
 }
