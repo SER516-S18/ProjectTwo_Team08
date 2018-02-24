@@ -8,6 +8,7 @@ import java.awt.*;
 
  /**
  * To initialize the console panel
+ * @author Aayushi Shah
  */
 
 public class ConsolePanel extends JPanel{

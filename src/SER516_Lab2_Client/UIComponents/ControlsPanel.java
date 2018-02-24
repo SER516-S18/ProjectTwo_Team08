@@ -8,6 +8,7 @@ import java.awt.*;
 
  /**
  * To initialize the control values in the center panel
+ * @author Aayushi Shah
  */
 
 public class ControlsPanel extends JPanel{
