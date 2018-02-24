@@ -1,5 +1,6 @@
 package SER516_Lab2_Client.UIComponents;
 
+import SER516_Lab2_Client.Consts;
 import SER516_Lab2_Client.Handlers;
 import SER516_Lab2_Client.TimeChart;
 

@@ -7,9 +7,13 @@ import SER516_Lab2_Client.UIComponents.ControlsPanel;
 import javax.swing.*;
 import java.io.IOException;
 
+
+
+
 public class Handlers {
 
     private static Handlers instance = null;
+
 
     public static Handlers getInstance() {
 
@@ -45,7 +49,8 @@ public class Handlers {
 
     /**
      * @author Ayan Shah
-     * Client start/stop button control method
+     * Client start/stop button control method to initiate client thread for message passing,
+     * and initiate chartView.
      */
 
     public void clientStartStop() {
@@ -77,6 +82,12 @@ public class Handlers {
         }
     }
 
+    /**
+     * Update the client display view based on the data sent by the server,
+     * which contains highest, lowest, average value and continuous
+     * data for the chart.
+     *
+     */
     public void updateUI(String inputString) {
 
         if (!"".equals(inputString)) {
