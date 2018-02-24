@@ -67,6 +67,8 @@ public class ControlsPanel extends JPanel{
         return "".equals(freq)? DEFAULT_FREQUENCY : freq;
     }
 
+    public void setFrequency(int value){frequency.setText(""+value);};
+
     public void setHighestValue(String value){
         highestValue.setText(value);
     }

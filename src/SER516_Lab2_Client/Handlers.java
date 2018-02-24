@@ -3,7 +3,7 @@ package SER516_Lab2_Client;
 import SER516_Lab2_Client.UIComponents.ChartPanel;
 import SER516_Lab2_Client.UIComponents.ConsolePanel;
 import SER516_Lab2_Client.UIComponents.ControlsPanel;
-import SER516_Lab2_Server.UIComponents.ServerUI;
+
 
 import javax.swing.*;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.io.IOException;
  *
  * @author Ejaz Saifudeen
  * @author Ayan Shah
+ * @author Vaishak Ramesh Vellore
  * @version 1.0
  * @since February 20, 2018
  */
@@ -73,9 +74,13 @@ public class Handlers {
         consolePanel = (ConsolePanel) panel;
     }
     
-    public static void displayConsoleMessage(String errorMessage)
+    /**
+     * Dispays message on the console
+     */
+    
+    public void displayConsoleMessage(String errorMessage)
     {
-        Handlers.getInstance().consolePanel.updateConsole(errorMessage + "\n");
+        consolePanel.updateConsole(errorMessage + "\n");
     }
 
     /**

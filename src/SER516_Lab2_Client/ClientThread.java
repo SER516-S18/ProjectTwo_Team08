@@ -60,13 +60,15 @@ public class ClientThread implements Runnable {
                 } catch (IOException |InterruptedException e) {
                     isClientClosed = true;
                     dataInputStream.close();
-                    System.out.println("Client Connection closed");
+                    String message = "Client Connection closed";
+            		Handlers.getInstance().displayConsoleMessage(message);
                 }
                 if (isClientClosed)
                     break;
             }
         }catch (SocketException e){
-            System.out.println("Server Connection closed");
+            String errorMessage = "Server Connection closed";
+    		Handlers.getInstance().displayConsoleMessage(errorMessage);
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,7 +83,8 @@ public class ClientThread implements Runnable {
         try {
             outputStream.writeUTF(Integer.toString(channels));
         } catch (Exception e) {
-            System.out.println("Unable to send channel value to the stream");
+            String errorMessage = "Unable to send channel value to the stream";
+    		Handlers.getInstance().displayConsoleMessage(errorMessage);
         }
     }
 
