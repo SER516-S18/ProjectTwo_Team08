@@ -53,7 +53,7 @@ public class NumberGenerator{
     private void generateNumbersForOutput(){
         ActionListener numbersActionListener = new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent eve){
+            public void actionPerformed(ActionEvent actionEvent){
                 String outPut = "";
 
                 for(int i = 0; i < channels; i++){
@@ -70,7 +70,7 @@ public class NumberGenerator{
 
                 try{
                     dataOutputStream.writeUTF(outPut);
-                } catch(Exception e){
+                } catch(Exception exception){
                     String errorMessage = "Client connection closed.";
                     ServerUtils.displayConsoleMessage(errorMessage);
                     numberTimer.stop();
