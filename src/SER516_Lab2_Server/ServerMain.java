@@ -7,7 +7,9 @@ import java.io.IOException;
 
 class ServerMain {
 
-
+ /*
+  * This class acts the main controller to start the server GUI
+  */
 	public static void initialiseGUI()
 	{
 		EventQueue.invokeLater(new Runnable() {
