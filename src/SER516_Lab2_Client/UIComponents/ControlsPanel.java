@@ -46,7 +46,7 @@ public class ControlsPanel extends JPanel{
         add(frequencyValLabel);
         add(frequency);
 
-        Handlers.getInstance().setContolPanel(this);
+        Handlers.getInstance().setControlPanel(this);
     }
 
 

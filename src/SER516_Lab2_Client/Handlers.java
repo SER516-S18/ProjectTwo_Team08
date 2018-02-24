@@ -5,15 +5,15 @@ import SER516_Lab2_Client.UIComponents.ConsolePanel;
 import SER516_Lab2_Client.UIComponents.ControlsPanel;
 
 import javax.swing.*;
-import java.awt.*;
+import java.io.IOException;
 
 public class Handlers {
 
     private static Handlers instance = null;
 
-    public static Handlers getInstance(){
+    public static Handlers getInstance() {
 
-        if(instance == null)
+        if (instance == null)
             instance = new Handlers();
 
         return instance;
@@ -25,59 +25,64 @@ public class Handlers {
     private boolean flag;
     private ClientControl clientControl;
     private int[] data;
+    private Thread runClientThread;
+    private ClientThread clientThread;
 
-    private Handlers(){
+    private Handlers() {
         this.flag = false;
     }
 
-    public void setContolPanel(JPanel panel){
-        controlPanel = (ControlsPanel)panel;
+    public void setControlPanel(JPanel panel) {
+        controlPanel = (ControlsPanel) panel;
     }
 
-    public void setChartPanel(JPanel panel){
-        chartPanel = (ChartPanel)panel;
+    public void setChartPanel(JPanel panel) {
+        chartPanel = (ChartPanel) panel;
     }
 
-    public void setConsolePanel(JPanel panel){
-        consolePanel = (ConsolePanel)panel;
+    public void setConsolePanel(JPanel panel) {
+        consolePanel = (ConsolePanel) panel;
     }
 
     /**
      * @author Ayan Shah
      * Client start/stop button control method
-     * */
+     */
 
-    public void clientStartStop(){
+    public void clientStartStop() {
 
-        if(!flag){
+        if (!flag || !runClientThread.isAlive()) {
             this.flag = true;
-            clientControl = new ClientControl();
+
             int channels;
             int frequency;
             try {
                 channels = Integer.parseInt(controlPanel.getChannels());
                 frequency = Integer.parseInt(controlPanel.getFrequency());
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 e.printStackTrace();
                 this.flag = false;
                 return;
             }
-            System.out.println("Channel- "+channels);
-            System.out.println("Client start");
-            clientControl.start(channels, frequency);
+            clientThread = new ClientThread(channels, frequency);
+            runClientThread = new Thread(clientThread);
+            runClientThread.start();
+
             chartPanel.initChart(channels, frequency);
-            controlPanel.setEnabled(!flag);
-        }else{
-            clientControl.stop();
+
+        } else if (runClientThread.isAlive()) {
             this.flag = false;
-            controlPanel.setEnabled(!flag);
+            try {
+                clientThread.clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void updateUI(String inputString) {
 
-        if (!"".equals(inputString)){
+        if (!"".equals(inputString)) {
             String[] splitInputs = inputString.split(",");
 
             int[] inputVals = new int[splitInputs.length];
@@ -92,7 +97,7 @@ public class Handlers {
             controlPanel.setAverageValue(Float.toString(Stats.computeAverage(data)));
         }
 
-        if(data == null) return;
+        if (data == null) return;
 
         chartPanel.plotPoints(data);
     }

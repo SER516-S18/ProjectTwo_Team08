@@ -14,9 +14,9 @@ import java.io.IOException;
 public class ClientControl {
 
     private ClientThread clientThread;
-
-    public ClientThread getClientThread(){
-        return clientThread;
+    private Thread runClientThread;
+    public Thread getClientThread(){
+        return runClientThread;
     }
 
     public void start(int channelCount, int frequency){
