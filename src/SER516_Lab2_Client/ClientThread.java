@@ -23,7 +23,6 @@ public class ClientThread implements Runnable {
     private DataOutputStream dataOutputStream;
     public Socket clientSocket;
     private int channels;
-    private int channelCount;
     private int frequency;
 
 
