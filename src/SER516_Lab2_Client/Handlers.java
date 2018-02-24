@@ -3,6 +3,7 @@ package SER516_Lab2_Client;
 import SER516_Lab2_Client.UIComponents.ChartPanel;
 import SER516_Lab2_Client.UIComponents.ConsolePanel;
 import SER516_Lab2_Client.UIComponents.ControlsPanel;
+import SER516_Lab2_Server.UIComponents.ServerUI;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -71,6 +72,11 @@ public class Handlers {
     public void setConsolePanel(JPanel panel) {
         consolePanel = (ConsolePanel) panel;
     }
+    
+    public static void displayConsoleMessage(String errorMessage)
+    {
+        Handlers.getInstance().consolePanel.updateConsole(errorMessage + "\n");
+    }
 
     /**
      * Client start/stop button control method to initiate client thread for message passing,
@@ -87,10 +93,6 @@ public class Handlers {
             try {
                 channels = Integer.parseInt(controlPanel.getChannels());
                 frequency = Integer.parseInt(controlPanel.getFrequency());
-                if(frequency<0){
-                    frequency *= -1;
-                    System.out.println("Frequency passed as a positive value.");
-                }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
                 this.flag = false;
