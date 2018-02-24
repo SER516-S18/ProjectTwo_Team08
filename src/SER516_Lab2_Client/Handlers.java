@@ -12,6 +12,7 @@ import java.io.IOException;
  * This class is a singleton and it servers as a controller between UI and functionality
  *
  * @author Ejaz Saifudeen
+ * @author Ayan Shah
  * @version 1.0
  * @since February 20, 2018
  */
@@ -72,7 +73,6 @@ public class Handlers {
     }
 
     /**
-     * @author Ayan Shah
      * Client start/stop button control method to initiate client thread for message passing,
      * and initiate chartView.
      */
