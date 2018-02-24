@@ -1,7 +1,7 @@
 package SER516_Lab2_Client;
 
 
-import SER516_Lab2_Client.UIComponents.*;
+import SER516_Lab2_Client.UIComponents.ClientUI;
 
 import java.awt.*;
 

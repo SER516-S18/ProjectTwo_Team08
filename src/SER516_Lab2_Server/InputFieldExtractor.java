@@ -1,6 +1,6 @@
 package SER516_Lab2_Server;
 
-import javax.swing.JTextPane;
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,9 +1,9 @@
 package SER516_Lab2_Server;
 
-import java.io.DataOutputStream;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import java.io.DataOutputStream;
 import java.net.ServerSocket;
 
 /**

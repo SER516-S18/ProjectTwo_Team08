@@ -1,8 +1,10 @@
 package SER516_Lab2_Client.UIComponents;
 
+import SER516_Lab2_Client.Consts;
+import SER516_Lab2_Client.Handlers;
+
 import javax.swing.*;
 import java.awt.*;
-import SER516_Lab2_Client.*;
 
  /**
  * To initialize the console panel

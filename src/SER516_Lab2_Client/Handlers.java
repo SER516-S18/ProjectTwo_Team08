@@ -4,9 +4,7 @@ import SER516_Lab2_Client.UIComponents.ChartPanel;
 import SER516_Lab2_Client.UIComponents.ConsolePanel;
 import SER516_Lab2_Client.UIComponents.ControlsPanel;
 
-
 import javax.swing.*;
-import java.io.IOException;
 
 
 /**

@@ -1,15 +1,13 @@
 package SER516_Lab2_Server.UIComponents;
 
+import SER516_Lab2_Server.InputFieldExtractor;
 import SER516_Lab2_Server.ServerControl;
 import SER516_Lab2_Server.ServerThread;
-import SER516_Lab2_Server.InputFieldExtractor;
 
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.SystemColor;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 import java.util.Map;
 
 /**

@@ -1,6 +1,6 @@
 package SER516_Lab2_Server;
 
-import SER516_Lab2_Server.UIComponents.*;
+import SER516_Lab2_Server.UIComponents.ServerUI;
 
 import java.awt.*;
 import java.io.IOException;
