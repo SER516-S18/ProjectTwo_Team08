@@ -227,6 +227,6 @@ public class ServerUI extends JFrame {
 	}
 
 	public static void setConsoleTextPane(String message) {
-		consoleTextPane.setText(consoleTextPane.getText() + "\n"+message);
+		consoleTextPane.setText(consoleTextPane.getText() +message);
 	}
 }
