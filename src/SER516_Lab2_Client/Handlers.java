@@ -8,13 +8,22 @@ import javax.swing.*;
 import java.io.IOException;
 
 
-
-
+/**
+ * This class is a singleton and it servers as a controller between UI and functionality
+ *
+ * @author Ejaz Saifudeen
+ * @version 1.0
+ * @since February 20, 2018
+ */
 public class Handlers {
 
     private static Handlers instance = null;
 
-
+    /**
+     * Returns an instance of the class
+     *
+     * @return Handlers
+     */
     public static Handlers getInstance() {
 
         if (instance == null)
@@ -35,20 +44,34 @@ public class Handlers {
         this.flag = false;
     }
 
+    /**
+     * Sets control-panel for later use
+     *
+     * @param panel
+     */
     public void setControlPanel(JPanel panel) {
         controlPanel = (ControlsPanel) panel;
     }
 
+    /**
+     * Sets chart-panel for later use
+     *
+     * @param panel
+     */
     public void setChartPanel(JPanel panel) {
         chartPanel = (ChartPanel) panel;
     }
 
+    /**
+     * Sets console-panel for later use
+     *
+     * @param panel
+     */
     public void setConsolePanel(JPanel panel) {
         consolePanel = (ConsolePanel) panel;
     }
 
     /**
-     * @author Ayan Shah
      * Client start/stop button control method to initiate client thread for message passing,
      * and initiate chartView.
      */
@@ -87,6 +110,7 @@ public class Handlers {
      * which contains highest, lowest, average value and continuous
      * data for the chart.
      *
+     * @param inputString comma-separated data received from server
      */
     public void updateUI(String inputString) {
 

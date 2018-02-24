@@ -10,6 +10,10 @@ import java.awt.*;
 
 /**
  * To initialize the chart in the center panel
+ *
+ * @author Ejaz Saifudeen #96
+ * @version 0.1
+ * @since February 17, 2018
  */
 
 public class ChartPanel extends JPanel {

@@ -14,11 +14,11 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 /**
+ * This class creates a JFree chart and plots values against current time.
+ *
  * @author Ejaz Saifudeen #96
  * @version 0.1
  * @since February 17, 2018
- *
- * This class creates a JFree chart and plots values against current time.
  */
 public class TimeChart extends JPanel{
 
