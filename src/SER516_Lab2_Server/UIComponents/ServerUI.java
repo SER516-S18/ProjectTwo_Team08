@@ -72,6 +72,7 @@ public class ServerUI extends JFrame {
 		viewPanel.add(highestValText);
 		highestValText.setBackground(this.PINK);
 		highestValText.setEditable(true);
+		highestValText.setText("10");
 		highestValText.setBorder(BorderFactory.createLineBorder(Color.black));
 
 		JLabel lowestValLabel = new JLabel("<html>&nbsp;Lowest<br>&nbsp;Value:</html>");
@@ -79,16 +80,17 @@ public class ServerUI extends JFrame {
 		lowestValLabel.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		lowestValLabel.setBounds(456, 94, 129, 62);
 		lowestValLabel.setOpaque(true);
-		lowestValLabel.setBackground(this.PINK);
+		lowestValLabel.setBackground(this.LIGHTBLUE);
 		lowestValLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(lowestValLabel);
 
 		lowestValText = new JTextPane();
 		lowestValText.setEditable(true);
 		lowestValText.setFont(new Font("Monospaced", Font.PLAIN, 18));
-		lowestValText.setBackground(this.LIGHTBLUE);
+		lowestValText.setBackground(this.PINK);
 		lowestValText.setBounds(600, 94, 129, 62);
 		lowestValText.setBorder(BorderFactory.createLineBorder(Color.black));
+		lowestValText.setText("1");
 		viewPanel.add(lowestValText);
 
 		JLabel frequencyLabel = new JLabel("<html>&nbsp;Frequency<br>&nbsp;(Hz):</html>");
@@ -106,6 +108,7 @@ public class ServerUI extends JFrame {
 		frequencyText.setBackground(this.PINK);
 		frequencyText.setBounds(600, 172, 129, 62);
 		frequencyText.setBorder(BorderFactory.createLineBorder(Color.black));
+		frequencyText.setText("1");
 		viewPanel.add(frequencyText);
 	}
 
@@ -197,13 +200,26 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function to toggle the highest, lowest, and frequency input fields
-	 * allowing user to input values.
+	 * allowing/restricting users to input values.
 	 * @author Jason Rice
 	 */
 	private void toggleInputFields() {
-		highestValText.setEditable(!isServerRunning);
-		lowestValText.setEditable(!isServerRunning);
-		frequencyText.setEditable(!isServerRunning);
+		if(!isServerRunning){
+			highestValText.setEditable(true);
+			highestValText.setBackground(this.PINK);
+			lowestValText.setEditable(true);
+			lowestValText.setBackground(this.PINK);
+			frequencyText.setEditable(true);
+			frequencyText.setBackground(this.PINK);
+		} else{
+			highestValText.setEditable(false);
+			highestValText.setBackground(Color.LIGHT_GRAY);
+			lowestValText.setEditable(false);
+			lowestValText.setBackground(Color.LIGHT_GRAY);
+			frequencyText.setEditable(false);
+			frequencyText.setBackground(Color.LIGHT_GRAY);
+		}
+		
 	}
 
 	public static JTextPane getConsoleTextPane() {

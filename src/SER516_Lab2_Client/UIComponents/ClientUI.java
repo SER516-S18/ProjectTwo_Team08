@@ -16,6 +16,7 @@ public class ClientUI extends JFrame {
 
 	public ClientUI() {
 		JPanel mainPanel = new JPanel();
+		setTitle("Client");
 		mainPanel.setLayout(new BorderLayout(20, 20));
 
 		TopPanel topPanel = new TopPanel();
