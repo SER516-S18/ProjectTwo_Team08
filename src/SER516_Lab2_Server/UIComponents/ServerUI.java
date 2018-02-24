@@ -12,6 +12,13 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.util.Map;
 
+/**
+* Creates the Server Graphical User Interface
+* @author Rhythm Sharma
+* @author Akash Sharma
+* @author Jason Rice
+* @version 1.0
+*/
 public class ServerUI extends JFrame {
 
 	private JFrame serverFrame;
@@ -31,7 +38,6 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Initializes the contents of the frame.
-	 * @author Rhythm Sharma
 	 */
 	public ServerUI() {
 		serverControl = new ServerControl();
@@ -43,7 +49,6 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function initializes view panel objects
-	 * @author Rhythm Sharma
 	 */
 	private void initializeViewPanelObjects() {
 		serverInstantiatedPanel = new JPanel();
@@ -109,7 +114,6 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function initializes view panel and sets its objects and attributes 
-	 * @author Rhythm Sharma
 	 */
 	private void initializeViewPanel() {
 		viewPanel = new JPanel();
@@ -123,7 +127,6 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function initializes console panel and sets the attributes
-	 * @author Rhythm Sharma
 	 */
 	private void initializeConsoleTextPane() {
 
@@ -141,7 +144,6 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function initializes Start/ Stop button and sets its attributes  
-	 * @author Rhythm Sharma
 	 */
 	private void initializeStartStopBtn() {
 		JButton btnStartStop = new JButton("Start / Stop");
@@ -160,7 +162,6 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function initializes server frame and sets the attributes 
-	 * @author Rhythm Sharma
 	 */
 	private void intializeServerFrame() {
 		serverFrame = new JFrame();
@@ -175,10 +176,8 @@ public class ServerUI extends JFrame {
 
 	/**
 	 * Function to Start/Stop Server and Update Server Status
-	 * @author Akash Sharma
 	 * @param FLAG
 	 */
-
 	public void serverStartStop(boolean FLAG) {
 
 		if (!FLAG) {
@@ -199,7 +198,6 @@ public class ServerUI extends JFrame {
 	/**
 	 * Function to toggle the highest, lowest, and frequency input fields
 	 * allowing/restricting users to input values.
-	 * @author Jason Rice
 	 */
 	private void toggleInputFields() {
 		if(!isServerRunning){
