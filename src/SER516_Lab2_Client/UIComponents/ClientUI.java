@@ -18,14 +18,17 @@ public class ClientUI extends JFrame {
 		JPanel mainPanel = new JPanel();
 		setTitle("Client");
 		mainPanel.setLayout(new BorderLayout(20, 20));
+		mainPanel.setBackground(Consts.BLUE);
 
 		TopPanel topPanel = new TopPanel();
 		CenterPanel centerPanel = new CenterPanel();
 		ConsolePanel consolePanel = new ConsolePanel();
-
+		
+		topPanel.setBackground(Consts.BLUE);
 		mainPanel.add(topPanel, BorderLayout.NORTH);
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 		mainPanel.add(consolePanel, BorderLayout.SOUTH);
+		
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		this.setContentPane(mainPanel);
 	}
