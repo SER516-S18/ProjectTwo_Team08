@@ -60,15 +60,18 @@ public class Handlers {
             }
             catch (NumberFormatException e){
                 e.printStackTrace();
+                this.flag = false;
                 return;
             }
             System.out.println("Channel- "+channels);
             System.out.println("Client start");
             clientControl.start(channels, frequency);
             chartPanel.initChart(channels, frequency);
+            controlPanel.setEnabled(!flag);
         }else{
             clientControl.stop();
             this.flag = false;
+            controlPanel.setEnabled(!flag);
         }
     }
 
@@ -83,13 +86,13 @@ public class Handlers {
                 inputVals[i] = Integer.parseInt(splitInputs[i]);
             }
             data = inputVals;
+
+            controlPanel.setHighestValue(Integer.toString(Stats.computeMax(data)));
+            controlPanel.setLowestValue(Integer.toString(Stats.computeMin(data)));
+            controlPanel.setAverageValue(Float.toString(Stats.computeAverage(data)));
         }
 
         if(data == null) return;
-
-        controlPanel.setHighestValue(Integer.toString(Stats.computeMax(data)));
-        controlPanel.setLowestValue(Integer.toString(Stats.computeMin(data)));
-        controlPanel.setAverageValue(Float.toString(Stats.computeAverage(data)));
 
         chartPanel.plotPoints(data);
     }

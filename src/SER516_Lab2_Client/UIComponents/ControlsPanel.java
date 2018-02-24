@@ -11,6 +11,9 @@ import java.awt.*;
 
 public class ControlsPanel extends JPanel{
 
+    private final String DEFAULT_CHANNEL = "1";
+     private final String DEFAULT_FREQUENCY = "1";
+
     private TextPane highestValue;
     private TextPane lowestValue;
     private TextPane averageValue;
@@ -56,12 +59,22 @@ public class ControlsPanel extends JPanel{
         return noOfChannels;
     }
 
+    public void setEnabled(boolean b){
+
+        channels.setEnabled(b);
+        frequency.setEnabled(b);
+    }
+
     public String getChannels(){
-        return channels.getSelectedItem().toString();
+
+        String channelCount = channels.getSelectedItem().toString();
+        return "".equals(channelCount)? DEFAULT_CHANNEL : channelCount;
     }
 
     public String getFrequency(){
-        return frequency.getText();
+
+        String freq = frequency.getText();
+        return "".equals(freq)? DEFAULT_FREQUENCY : freq;
     }
 
     public void setHighestValue(String value){
