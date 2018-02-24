@@ -80,14 +80,14 @@ public class ServerUI extends JFrame {
 		lowestValLabel.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		lowestValLabel.setBounds(456, 94, 129, 62);
 		lowestValLabel.setOpaque(true);
-		lowestValLabel.setBackground(this.PINK);
+		lowestValLabel.setBackground(this.LIGHTBLUE);
 		lowestValLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 		viewPanel.add(lowestValLabel);
 
 		lowestValText = new JTextPane();
 		lowestValText.setEditable(true);
 		lowestValText.setFont(new Font("Monospaced", Font.PLAIN, 18));
-		lowestValText.setBackground(this.LIGHTBLUE);
+		lowestValText.setBackground(this.PINK);
 		lowestValText.setBounds(600, 94, 129, 62);
 		lowestValText.setBorder(BorderFactory.createLineBorder(Color.black));
 		lowestValText.setText("1");
@@ -206,11 +206,11 @@ public class ServerUI extends JFrame {
 	private void toggleInputFields() {
 		if(!isServerRunning){
 			highestValText.setEditable(true);
-			highestValText.setBackground(Color.WHITE);
+			highestValText.setBackground(this.PINK);
 			lowestValText.setEditable(true);
-			lowestValText.setBackground(Color.WHITE);
+			lowestValText.setBackground(this.PINK);
 			frequencyText.setEditable(true);
-			frequencyText.setBackground(Color.WHITE);
+			frequencyText.setBackground(this.PINK);
 		} else{
 			highestValText.setEditable(false);
 			highestValText.setBackground(Color.LIGHT_GRAY);
