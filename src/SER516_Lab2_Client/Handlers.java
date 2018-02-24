@@ -93,6 +93,11 @@ public class Handlers {
             try {
                 channels = Integer.parseInt(controlPanel.getChannels());
                 frequency = Integer.parseInt(controlPanel.getFrequency());
+                if(frequency<0){
+                    frequency *= -1;
+                    controlPanel.setFrequency(frequency);
+                    System.out.println("Frequency passed as a positive value.");
+                }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
                 this.flag = false;
