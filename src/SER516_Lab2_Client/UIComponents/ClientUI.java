@@ -1,5 +1,7 @@
 package SER516_Lab2_Client.UIComponents;
 
+import SER516_Lab2_Client.Consts;
+
 import java.awt.*;
 
 import javax.swing.JFrame;
