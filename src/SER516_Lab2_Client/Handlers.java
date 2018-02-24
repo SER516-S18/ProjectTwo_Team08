@@ -72,6 +72,7 @@ public class Handlers {
     }
 
     /**
+     * @author Ayan Shah
      * Client start/stop button control method to initiate client thread for message passing,
      * and initiate chartView.
      */
